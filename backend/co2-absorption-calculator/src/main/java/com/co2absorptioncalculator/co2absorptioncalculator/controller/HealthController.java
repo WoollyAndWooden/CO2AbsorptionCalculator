@@ -14,7 +14,7 @@ public class HealthController {
     }
 
     @GetMapping("/health")
-    public int getHealth() {
+    public String getHealth() {
         return healthService.getHealth();
     }
 }
