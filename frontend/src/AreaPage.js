@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import './css/page.css'
 
 
-export default function AreaSite() {
+export default function AreaPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const [value, setValue] = useState(0)

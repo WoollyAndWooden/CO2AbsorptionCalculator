@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/page.css'
 
-export default function MainSite() {
+export default function MainPage() {
 
     const [choiceList, setChoiceList] = useState([])
     const inputRef = useRef()

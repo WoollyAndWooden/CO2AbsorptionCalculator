@@ -1,15 +1,15 @@
 import './css/App.css';
-import MainSite from './MainSite';
+import MainPage from './MainPage';
 import { Switch, Route } from 'react-router-dom'
-import AreaSite from './AreaSite';
+import AreaPage from './AreaPage';
 import NotImplemented from './NotImplemented';
 
 function App() {
     
   return (
     <Switch>
-      <Route exact path="/" component={MainSite} />
-      <Route exact path="/area" component={AreaSite} />
+      <Route exact path="/" component={MainPage} />
+      <Route exact path="/area" component={AreaPage} />
       <Route exact path="/notimplemented" component={NotImplemented} />
 
     </Switch>      
