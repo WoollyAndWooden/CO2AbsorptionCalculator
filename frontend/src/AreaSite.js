@@ -10,8 +10,6 @@ export default function AreaSite() {
     const inputRef = useRef()
 
     function addChoice() {
-        console.log("AAA")
-        console.log(choiceList.length)
         if(choiceList.length === 2) {
             choiceList.pop()
         }
@@ -35,7 +33,6 @@ export default function AreaSite() {
             <div>
                 <div className="centerdiv">
                     <h2>Powierzchnia Lasu poniżej...:</h2>
-                    {console.log(choiceList)}
                     <form>
                         <input
                         id="area"

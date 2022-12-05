@@ -28,7 +28,6 @@ export default function MainSite() {
                 <form>
                     <input ref={inputRef} list="forests" onInput={addChoice}></input>
                     <label>wiek lasu</label>
-                    {console.log(choiceList.length)}
                     <Link to={{
                         pathname: '/area',
                         state: {
