@@ -45,7 +45,7 @@ export default function AreaPage() {
                         </input>
                         <label>m2</label>
                         <Link to={{
-                        pathname: '/average',
+                        pathname: '/averageAge',
                         state: {
                             state: choiceList
                         }
@@ -72,7 +72,7 @@ export default function AreaPage() {
                         </input>
                         <label>m2</label>
                         <Link to={{
-                        pathname: '/notimplemented',
+                        pathname: '/notImplemented',
                     }}>Dalej</Link>
                     </form>
                 </div>
