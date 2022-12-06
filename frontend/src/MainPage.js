@@ -4,14 +4,14 @@ import './css/page.css'
 
 export default function MainPage() {
 
-    const [choiceList, setChoiceList] = useState([])
+    const [choiceList, setChoiceList] = useState(['mature'])
     const inputRef = useRef()
 
-    function addChoice() {
+    function addChoice(event) {
         choiceList.pop()
-        
+
         let choice;
-        if(inputRef.current.value === 'Dojrzałe lasy') {
+        if(event.target.value === 'Dojrzałe') {
             choice = 'mature'
         } else {
             choice = 'young'
@@ -26,7 +26,10 @@ export default function MainPage() {
             <div className="centerdiv">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
-                    <input ref={inputRef} list="forests" onInput={addChoice}></input>
+                    <select  onChange={addChoice}>
+                        <option value="Dojrzałe" ref={inputRef}>Dojrzałe lasy</option>
+                        <option value="Młode" ref={inputRef}>Młode lasy </option>
+                    </select>
                     <label>wiek lasu</label>
                     <Link to={{
                         pathname: '/area',
@@ -34,11 +37,6 @@ export default function MainPage() {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-
-                    <datalist id="forests">
-                        <option value="Dojrzałe lasy"></option>
-                        <option value="Młode lasy"></option>
-                    </datalist>
                 </form>
             </div>
         </div>
