@@ -13,7 +13,7 @@ export default function AreaPage() {
         if(choiceList.length === 2) {
             choiceList.pop()
         }
-        const newList = choiceList.concat(inputRef.current.value)
+        const newList = choiceList.concat(value)
         setChoiceList(newList)
     }
 
