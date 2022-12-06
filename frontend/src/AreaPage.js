@@ -59,7 +59,6 @@ export default function AreaPage() {
             <div>
                 <div className="centerdiv">
                     <h2>Powierzchnia Lasu...:</h2>
-                    {console.log(choiceList)}
                     <form>
                         <input
                         id="area"
