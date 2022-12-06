@@ -37,7 +37,6 @@ export default function AverageAgePage() {
                             </label>
                         </div>
                     ))}
-                    {console.log(value)}
                     <Link to={{
                         pathname: '/notImplemented',
                         state: {
