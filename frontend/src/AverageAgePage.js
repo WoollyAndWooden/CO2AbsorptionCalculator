@@ -6,33 +6,38 @@ import './css/page.css'
 export default function AverageAgePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
-    const [value, setValue] = useState(0)
     const inputRef = useRef()
     const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
-    const ageGroupsArray = ageGroups.map(element => createRadioButton(element))
 
-    function createRadioButton(element){
-        console.log(element)
-        return (
-        <div>
-            <label>
-                <input
-                    type="radio"
-                    value="{element}"
-                />
-                {element}
-            </label>
-        </div>
-        )
+    function handleChange(event){
+        if(choiceList.length === 3) {
+            choiceList.pop()
+        }
+        const newList = choiceList.concat(event.target.value)
+        setChoiceList(newList)
     }
-
 
     return (
         <div>
             <div className="centerdiv">
                 <h2>Średni wiek lasu poniżej...:</h2>
                 <form>
-                    {ageGroupsArray}
+                    {ageGroups.map(element => (
+                        <div>
+                            <label>
+                                <input 
+                                ref={inputRef}
+                                name="radiobutton"
+                                type="radio"
+                                key={element} 
+                                value={element}
+                                onClick={(event) => handleChange(event)} 
+                                />
+                                {element}
+                            </label>
+                        </div>
+                    ))}
+                    {console.log(value)}
                     <Link to={{
                         pathname: '/notImplemented',
                         state: {
