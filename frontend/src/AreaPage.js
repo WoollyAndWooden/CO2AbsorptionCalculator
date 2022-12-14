@@ -13,7 +13,7 @@ export default function AreaPage() {
         if(choiceList.length === 2) {
             choiceList.pop()
         }
-        const newList = choiceList.concat(value)
+        const newList = choiceList.concat(handleDecimalPlace(inputRef.current.value))
         setChoiceList(newList)
     }
 
@@ -25,8 +25,6 @@ export default function AreaPage() {
     function checkValue(event) {
         setValue(handleDecimalPlace(event.target.value))
     }
-
-
 
     if(choiceList[0] === 'mature') {
         return (
