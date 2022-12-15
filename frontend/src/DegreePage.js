@@ -1,28 +1,42 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
+import { useRef } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import './css/page.css'
 
-
-export default function AverageAgePage() {
+export default function DegreePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const inputRef = useRef()
-    const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
+    const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
 
     function handleChange(event){
-        if(choiceList.length === 3) {
+        if(choiceList.length === 4) {
             choiceList.pop()
         }
-        const newList = choiceList.concat(event.target.value)
+        const value = event.target.value
+        var percentage;
+        switch(value){
+            case 'naturalne':
+                percentage = 1 // to change
+                break
+            case 'o znamionach siedlisk naturalnych':
+                percentage = 2 // to change
+                break
+            case "półnaturalne":
+                percentage = 3 // to change
+                break
+        }
+
+        const newList = choiceList.concat(percentage)
         setChoiceList(newList)
     }
 
     return (
         <div>
             <div className="centerdiv">
-                <h2>Średni wiek lasu poniżej...:</h2>
+                <h2>Stopień Naturalności:</h2>
                 <form>
-                    {ageGroups.map(element => (
+                    {degrees.map(element => (
                         <div>
                             <label>
                                 <input 
@@ -38,11 +52,11 @@ export default function AverageAgePage() {
                         </div>
                     ))}
                     <Link to={{
-                        pathname: '/degree',
+                        pathname: '/notimplemented',
                         state: {
                             state: choiceList
                         }
-                    }}>Dalej</Link>
+                    }}>Oblicz</Link>
                 </form>
             </div>
         </div>
