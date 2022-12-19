@@ -5,6 +5,7 @@ import AreaPage from './AreaPage';
 import AverageAgePage from "./AverageAgePage";
 import NotImplemented from './NotImplemented';
 import DegreePage from './DegreePage';
+import CheckPage from './CheckPage';
 
 function App() {
     
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/area" component={AreaPage} />
         <Route exact path="/averageAge" component = {AverageAgePage} />
         <Route exact path="/degree" component = {DegreePage} />
+        <Route exact path="/check" component = {CheckPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />
         
     </Switch>      
