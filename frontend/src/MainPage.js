@@ -4,7 +4,7 @@ import './css/page.css'
 
 export default function MainPage() {
 
-    const [choiceList, setChoiceList] = useState(['mature'])
+    const [choiceList, setChoiceList] = useState([{tag: 'mature', value: 'Dojrzałe lasy'}])
     const inputRef = useRef()
 
     function addChoice(event) {
@@ -12,9 +12,9 @@ export default function MainPage() {
 
         let choice;
         if(event.target.value === 'Dojrzałe') {
-            choice = 'mature'
+            choice = {tag: event.target.value, value: 'Dojrzałe lasy'}
         } else {
-            choice = 'young'
+            choice = {tag: event.target.value, value: 'Młode lasy'}
         }
         const newList = choiceList.concat(choice)
 
@@ -27,8 +27,8 @@ export default function MainPage() {
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
                     <select  onChange={addChoice}>
-                        <option value="Dojrzałe" ref={inputRef}>Dojrzałe lasy</option>
-                        <option value="Młode" ref={inputRef}>Młode lasy </option>
+                        <option value="mature" ref={inputRef}>Dojrzałe lasy</option>
+                        <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>
                     <label>wiek lasu</label>
                     <Link to={{

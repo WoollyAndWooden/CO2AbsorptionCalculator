@@ -14,19 +14,19 @@ export default function DegreePage() {
             choiceList.pop()
         }
         const value = event.target.value
-        var percentage;
+        var choice;
         switch(value){
             case 'naturalne':
-                percentage = 1
+                choice = {percentage: 1, value: 'naturalne'}
                 break
             case 'o znamionach siedlisk naturalnych':
-                percentage = 0.8
+                choice = {percentage: 0.8, value: 'o znamionach siedlisk naturalnych'}
             case "półnaturalne":
-                percentage = 0.5
+                choice = {percentage: 0.5, value: 'półnaturalne'}
                 break
         }
 
-        const newList = choiceList.concat(percentage)
+        const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }
 

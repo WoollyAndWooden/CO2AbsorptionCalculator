@@ -30,7 +30,7 @@ export default function CheckPage() {
                 <div className='column'>
                 {choiceList.map(element => (
                     <div >
-                        <div>{element}</div>
+                        <div>{element.value}</div>
                     </div>             
                 ))}
                 </div>

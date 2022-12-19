@@ -13,7 +13,7 @@ export default function AverageAgePage() {
         if(choiceList.length === 3) {
             choiceList.pop()
         }
-        const newList = choiceList.concat(event.target.value)
+        const newList = choiceList.concat({value: event.target.value})
         setChoiceList(newList)
     }
 
