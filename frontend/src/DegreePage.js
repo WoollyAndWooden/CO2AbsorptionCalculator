@@ -17,13 +17,12 @@ export default function DegreePage() {
         var percentage;
         switch(value){
             case 'naturalne':
-                percentage = 1 // to change
+                percentage = 1
                 break
             case 'o znamionach siedlisk naturalnych':
-                percentage = 2 // to change
-                break
+                percentage = 0.8
             case "półnaturalne":
-                percentage = 3 // to change
+                percentage = 0.5
                 break
         }
 
@@ -52,7 +51,7 @@ export default function DegreePage() {
                         </div>
                     ))}
                     <Link to={{
-                        pathname: '/notimplemented',
+                        pathname: '/check',
                         state: {
                             state: choiceList
                         }
