@@ -16,7 +16,7 @@ public class CalculateController {
     }
 
     @GetMapping("/calculate")
-    public String calculate() {
+    public Double calculate() {
         return calculateService.calculate();
     }
 }
