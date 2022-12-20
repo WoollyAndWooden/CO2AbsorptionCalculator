@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculateService {
 
-    public String calculate() { // to change
-        return "Calculated";
+    public Double calculate() { // to change
+        return 123d;
     }
 }
