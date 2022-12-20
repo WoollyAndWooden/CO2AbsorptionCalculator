@@ -4,6 +4,7 @@ import {Switch, Route, Router} from 'react-router-dom'
 import AreaPage from './AreaPage';
 import AverageAgePage from "./AverageAgePage";
 import NotImplemented from './NotImplemented';
+import HabitatPage from './HabitatPage';
 import DegreePage from './DegreePage';
 import CheckPage from './CheckPage';
 
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={MainPage} />
         <Route exact path="/area" component={AreaPage} />
         <Route exact path="/averageAge" component = {AverageAgePage} />
+        <Route exact path="/habitat" component = {HabitatPage} />
         <Route exact path="/degree" component = {DegreePage} />
         <Route exact path="/check" component = {CheckPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />

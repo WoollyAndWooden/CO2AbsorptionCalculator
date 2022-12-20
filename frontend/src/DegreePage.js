@@ -10,7 +10,7 @@ export default function DegreePage() {
     const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
 
     function handleChange(event){
-        if(choiceList.length === 4) {
+        if(choiceList.length === 5) {
             choiceList.pop()
         }
         const value = event.target.value
@@ -21,6 +21,7 @@ export default function DegreePage() {
                 break
             case 'o znamionach siedlisk naturalnych':
                 choice = {percentage: 0.8, value: 'o znamionach siedlisk naturalnych'}
+                break
             case "półnaturalne":
                 choice = {percentage: 0.5, value: 'półnaturalne'}
                 break

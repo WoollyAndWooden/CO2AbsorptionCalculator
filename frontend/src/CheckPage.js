@@ -25,6 +25,7 @@ export default function CheckPage() {
                     <label>Las</label>
                     <label>Area</label>
                     <label>Wiek</label>
+                    <label>Siedlisko</label>
                     <label>Stopien</label>
                 </div>
                 <div className='column'>

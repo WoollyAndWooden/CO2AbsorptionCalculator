@@ -38,7 +38,7 @@ export default function AverageAgePage() {
                         </div>
                     ))}
                     <Link to={{
-                        pathname: '/degree',
+                        pathname: '/habitat',
                         state: {
                             state: choiceList
                         }
