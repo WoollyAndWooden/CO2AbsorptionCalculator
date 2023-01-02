@@ -63,7 +63,7 @@ export default function MaslPage() {
                     ))}
                     <div>{description}</div>
                     <Link to={{
-                        pathname: '/check',
+                        pathname: '/season',
                         state: {
                             state: choiceList
                         }

@@ -14,7 +14,7 @@ export default function GrowingSeasonPage() {
     ]
 
     function handleChange(event){
-        if(choiceList.length === 8) {
+        if(choiceList.length === 9) {
             choiceList.pop()
         }
         const value = event.target.value

@@ -29,6 +29,7 @@ export default function CheckPage() {
                     <label>Stopień</label>
                     <label>Gleba</label>
                     <label>Rezerwy Wody</label>
+                    <label>Ukształtowanie terenu</label>
                     <label>Lokacja</label>
                 </div>
                 <div className='column'>
