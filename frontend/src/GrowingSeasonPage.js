@@ -27,7 +27,7 @@ export default function GrowingSeasonPage() {
     return (
         <div>
             <div className="centerdiv">
-                <h2>Stopień Naturalności:</h2>
+                <h2>Wysokość n.p.m</h2>
                 <form>
                     {places.map(element => (
                         <div>
@@ -49,7 +49,7 @@ export default function GrowingSeasonPage() {
                         state: {
                             state: choiceList
                         }
-                    }}>Dalej</Link>
+                    }}>Oblicz</Link>
                 </form>
             </div>
         </div>

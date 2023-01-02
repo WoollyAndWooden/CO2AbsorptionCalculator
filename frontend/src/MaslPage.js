@@ -44,7 +44,7 @@ export default function MaslPage() {
     return (
         <div>
             <div className="centerdiv">
-                <h2>Wilgotność gleby:</h2>
+                <h2>Wysokość n.p.m:</h2>
                 <form>
                 {landforms.map(element => (
                         <div>
@@ -67,7 +67,7 @@ export default function MaslPage() {
                         state: {
                             state: choiceList
                         }
-                    }}>Oblicz</Link>
+                    }}>Dalej</Link>
                 </form>
             </div>
         </div>

@@ -47,7 +47,7 @@ export default function HabitatPage() {
                         state: {
                             state: choiceList
                         }
-                    }}>Oblicz</Link>
+                    }}>Dalej</Link>
                 </form>
             </div>
         </div>

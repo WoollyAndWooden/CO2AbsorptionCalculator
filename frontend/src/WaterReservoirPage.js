@@ -28,7 +28,7 @@ export default function WaterReservoirPage() {
     return (
         <div>
             <div className="centerdiv">
-                <h2>Wilgotność gleby:</h2>
+                <h2>Zbiorniki wodne: </h2>
                 <form>
                     <div>
                         <label>

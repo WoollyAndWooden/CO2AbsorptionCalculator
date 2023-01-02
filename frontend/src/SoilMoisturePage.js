@@ -60,7 +60,7 @@ export default function SoilMoisturePage() {
                         state: {
                             state: choiceList
                         }
-                    }}>Oblicz</Link>
+                    }}>Dalej</Link>
                 </form>
             </div>
         </div>

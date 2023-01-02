@@ -26,8 +26,7 @@ function App() {
         <Route exact path="/masl" component = {MaslPage} />
         <Route exact path="/season" component = {GrowingSeasonPage} />
         <Route exact path="/check" component = {CheckPage} />
-        <Route exact path="/notImplemented" component={NotImplemented} />
-        
+        <Route exact path="/notImplemented" component={NotImplemented} />  
     </Switch>      
   );
 }
