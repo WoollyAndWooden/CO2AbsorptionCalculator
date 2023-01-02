@@ -33,7 +33,7 @@ export default function AreaPage() {
         return (
             <div>
                 <div className="centerdiv">
-                    <h2>Powierzchnia Lasu poniżej...:</h2>
+                    <h2>Powierzchnia Lasu:</h2>
                     <form>
                         <input
                         id="area"

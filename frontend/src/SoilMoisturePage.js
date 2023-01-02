@@ -1,28 +1,46 @@
 import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import './css/page.css'
 
-
-export default function AverageAgePage() {
+export default function SoilMoisturePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const inputRef = useRef()
-    const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
+    const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
 
     function handleChange(event){
-        if(choiceList.length === 3) {
+        if(choiceList.length === 6) {
             choiceList.pop()
         }
-        const newList = choiceList.concat({value: event.target.value})
+        const value = event.target.value
+        var choice;
+        switch(value){
+            case 'Bagienna':
+                choice = {tag: 'swamp', value: value}
+                break
+            case 'Podmokła':
+                choice = {tag : 'wet', value: value}
+                break
+            case "Wilgotna":
+                choice = {tag : 'moist', value: value}
+                break
+            case "Pół wilgotna":
+                choice = {tag : 'half-moist', value: value}
+                break
+            case "Sucha":
+                choice = {tag : 'dry', value: value}
+                break
+        }
+
+        const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }
 
     return (
         <div>
             <div className="centerdiv">
-                <h2>Średni wiek lasu:</h2>
+                <h2>Wilgotność gleby:</h2>
                 <form>
-                    {ageGroups.map(element => (
+                    {soilMoisture.map(element => (
                         <div>
                             <label>
                                 <input 
@@ -38,7 +56,7 @@ export default function AverageAgePage() {
                         </div>
                     ))}
                     <Link to={{
-                        pathname: '/habitat',
+                        pathname: '/reservoir',
                         state: {
                             state: choiceList
                         }

@@ -1,42 +1,52 @@
-import React from 'react'
-import { useRef } from 'react'
-import { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export default function DegreePage() {
+export default function MaslPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const inputRef = useRef()
-    const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
+    const landforms = ["Niziny", "Wyżyny", "Góry"]
+    const descriptions = [
+        "Niziny - Obszary o wysokości bezwzględnej do 300 m n.p.m.",
+        "Wyżyny - Obszary o wysokości powyżej 300 m n.p.m. i wysokościach względnych nieprzekraczających 300 m.",
+        "Góry - Obszary o wysokości powyżej 300 m n.p.m. i różnicach wysokości względnych powyżej 300 m."
+    ]
+    const [description, setDescription] = useState("")
+
 
     function handleChange(event){
-        if(choiceList.length === 5) {
+        if(choiceList.length === 8) {
             choiceList.pop()
         }
         const value = event.target.value
         var choice;
+        var i = 0
         switch(value){
-            case 'naturalne':
-                choice = {percentage: 1, value: 'naturalne'}
+            case 'Niziny':
+                choice = {tag: 'lowlands', value: value}
+                i = 0
                 break
-            case 'o znamionach siedlisk naturalnych':
-                choice = {percentage: 0.8, value: 'o znamionach siedlisk naturalnych'}
+            case 'Wyżyny':
+                choice = {tag : 'highlands', value: value}
+                i = 1
                 break
-            case "półnaturalne":
-                choice = {percentage: 0.5, value: 'półnaturalne'}
+            case 'Góry':
+                choice = {tag : 'mountains', value: value}
+                i = 2
                 break
         }
 
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
+        setDescription(descriptions[i])
     }
 
     return (
         <div>
             <div className="centerdiv">
-                <h2>Stopień Naturalności:</h2>
+                <h2>Wysokość n.p.m:</h2>
                 <form>
-                    {degrees.map(element => (
+                {landforms.map(element => (
                         <div>
                             <label>
                                 <input 
@@ -51,8 +61,9 @@ export default function DegreePage() {
                             </label>
                         </div>
                     ))}
+                    <div>{description}</div>
                     <Link to={{
-                        pathname: '/soil',
+                        pathname: '/check',
                         state: {
                             state: choiceList
                         }

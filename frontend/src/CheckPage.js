@@ -19,14 +19,17 @@ export default function CheckPage() {
     return (
     <div>
         <div className="centerdiv">
-            <h2>Stopień Naturalności:</h2>
+            <h2>Wybrane Opcje:</h2>
             <form className='next'>
                 <div className='column'>
                     <label>Las</label>
-                    <label>Area</label>
+                    <label>Pole powierzchni</label>
                     <label>Wiek</label>
                     <label>Siedlisko</label>
-                    <label>Stopien</label>
+                    <label>Stopień</label>
+                    <label>Gleba</label>
+                    <label>Rezerwy Wody</label>
+                    <label>Lokacja</label>
                 </div>
                 <div className='column'>
                 {choiceList.map(element => (
@@ -42,7 +45,7 @@ export default function CheckPage() {
 
                 <Link to={{
                         pathname: '/',
-                    }}>Wroc do glownej</Link>
+                    }}>Wróć do początku</Link>
         </div>
     </div>
   )
