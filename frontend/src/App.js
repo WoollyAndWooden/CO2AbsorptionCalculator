@@ -10,6 +10,7 @@ import CheckPage from './CheckPage';
 import SoilMoisturePage from './SoilMoisturePage';
 import WaterReservoirPage from './WaterReservoirPage';
 import MaslPage from './MaslPage';
+import GrowingSeasonPage from './GrowingSeasonPage';
 
 function App() {
     
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/soil" component = {SoilMoisturePage} />
         <Route exact path="/reservoir" component = {WaterReservoirPage} />
         <Route exact path="/masl" component = {MaslPage} />
+        <Route exact path="/season" component = {GrowingSeasonPage} />
         <Route exact path="/check" component = {CheckPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />
         
