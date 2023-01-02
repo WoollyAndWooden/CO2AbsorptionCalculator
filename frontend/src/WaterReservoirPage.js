@@ -57,7 +57,7 @@ export default function WaterReservoirPage() {
                         </label>
                     </div>
                     <Link to={{
-                        pathname: '/season',
+                        pathname: '/masl',
                         state: {
                             state: choiceList
                         }
