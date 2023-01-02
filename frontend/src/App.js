@@ -8,6 +8,7 @@ import HabitatPage from './HabitatPage';
 import DegreePage from './DegreePage';
 import CheckPage from './CheckPage';
 import SoilMoisturePage from './SoilMoisturePage';
+import WaterReservoirPage from './WaterReservoirPage';
 
 function App() {
     
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/habitat" component = {HabitatPage} />
         <Route exact path="/degree" component = {DegreePage} />
         <Route exact path="/soil" component = {SoilMoisturePage} />
+        <Route exact path="/reservoir" component = {WaterReservoirPage} />
         <Route exact path="/check" component = {CheckPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />
         
