@@ -57,11 +57,11 @@ export default function WaterReservoirPage() {
                         </label>
                     </div>
                     <Link to={{
-                        pathname: '/check',
+                        pathname: '/masl',
                         state: {
                             state: choiceList
                         }
-                    }}>Oblicz</Link>
+                    }}>Dalej</Link>
                 </form>
             </div>
         </div>
