@@ -1,29 +1,33 @@
-import React from 'react'
-import { useRef } from 'react'
-import { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export default function DegreePage() {
+export default function SoilMoisturePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const inputRef = useRef()
-    const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
+    const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
 
     function handleChange(event){
-        if(choiceList.length === 5) {
+        if(choiceList.length === 6) {
             choiceList.pop()
         }
         const value = event.target.value
         var choice;
         switch(value){
-            case 'naturalne':
-                choice = {percentage: 1, value: 'naturalne'}
+            case 'Bagienna':
+                choice = {tag: 'swamp', value: value}
                 break
-            case 'o znamionach siedlisk naturalnych':
-                choice = {percentage: 0.8, value: 'o znamionach siedlisk naturalnych'}
+            case 'Podmokła':
+                choice = {tag : 'wet', value: value}
                 break
-            case "półnaturalne":
-                choice = {percentage: 0.5, value: 'półnaturalne'}
+            case "Wilgotna":
+                choice = {tag : 'moist', value: value}
+                break
+            case "Pół wilgotna":
+                choice = {tag : 'half-moist', value: value}
+                break
+            case "Sucha":
+                choice = {tag : 'dry', value: value}
                 break
         }
 
@@ -34,9 +38,9 @@ export default function DegreePage() {
     return (
         <div>
             <div className="centerdiv">
-                <h2>Stopień Naturalności:</h2>
+                <h2>Wilgotność gleby:</h2>
                 <form>
-                    {degrees.map(element => (
+                    {soilMoisture.map(element => (
                         <div>
                             <label>
                                 <input 
@@ -52,11 +56,11 @@ export default function DegreePage() {
                         </div>
                     ))}
                     <Link to={{
-                        pathname: '/soil',
+                        pathname: '/check',
                         state: {
                             state: choiceList
                         }
-                    }}>Dalej</Link>
+                    }}>Oblicz</Link>
                 </form>
             </div>
         </div>
