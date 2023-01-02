@@ -57,7 +57,7 @@ export default function CheckPage() {
             </form>
             <div>
                 <label>Wynik</label>
-                <div>{result}</div>
+                <div>{result} t/ha</div>
             </div>
             
             <button ref={buttonRef} onClick={callApi}>Oblicz</button>
