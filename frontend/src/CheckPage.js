@@ -2,19 +2,34 @@ import React, { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 
 export default function CheckPage() {
 
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [result, setResult] = useState(0)
     const buttonRef = useRef(null);
 
     function callApi() {
-        fetch('http://localhost:8080/calculate', { method: 'GET' })
-          .then(data => data.json()) // Parsing the data into a JavaScript object
-          .then(json => alert(JSON.stringify(json))) // Displaying the stringified data in an alert popup
-        }
+        axios.get('http://localhost:8080/calculate', {
+            params: {
+                forest: choiceList[0].tag,
+                area: choiceList[1].value,
+                age: choiceList[2].value,
+                habitat: choiceList[3].value,
+                degree: choiceList[4].percentage,
+                soil: choiceList[5].tag,
+                reservoir: choiceList[6].tag,
+                land: choiceList[7].tag,
+                location: choiceList[8].value,
+            }
+        })
+        .then(result => setResult(result.data))
+        .catch(error => console.log(error))
+    
+    }
     
     return (
     <div>
@@ -40,9 +55,12 @@ export default function CheckPage() {
                 ))}
                 </div>
             </form>
+            <div>
+                <label>Wynik</label>
+                <div>{result}</div>
+            </div>
             
             <button ref={buttonRef} onClick={callApi}>Oblicz</button>
-                {console.log(choiceList)}
 
                 <Link to={{
                         pathname: '/',
