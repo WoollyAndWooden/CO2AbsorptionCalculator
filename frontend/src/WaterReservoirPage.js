@@ -12,7 +12,6 @@ export default function WaterReservoirPage() {
         }
         const value = event.target.value
         var choice;
-        console.log(value)
         switch(value){
             case 'Są':
                 choice = {tag: 'present', value: value}
