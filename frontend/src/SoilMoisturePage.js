@@ -36,7 +36,7 @@ export default function SoilMoisturePage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Wilgotność gleby:</h2>
                 <form>
@@ -55,7 +55,7 @@ export default function SoilMoisturePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                   <Link className='link' to={{
                         pathname: '/reservoir',
                         state: {
                             state: choiceList

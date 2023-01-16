@@ -32,7 +32,7 @@ export default function DegreePage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Stopień Naturalności:</h2>
                 <form>
@@ -51,7 +51,7 @@ export default function DegreePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                   <Link className='link' to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList

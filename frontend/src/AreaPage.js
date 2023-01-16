@@ -31,7 +31,7 @@ export default function AreaPage() {
 
     if(choiceList[0].tag === 'mature') {
         return (
-            <div>
+            <div className='bg'>
                 <div className="centerdiv">
                     <h2>Powierzchnia Lasu:</h2>
                     <form>
@@ -45,7 +45,7 @@ export default function AreaPage() {
                         onInput={addChoice}>
                         </input>
                         <label>m2</label>
-                        <Link to={{
+                        <Link className='link' to={{
                         pathname: '/averageAge',
                         state: {
                             state: choiceList
@@ -57,7 +57,7 @@ export default function AreaPage() {
         )
     } else {
         return (
-            <div>
+            <div className='bg'>
                 <div className="centerdiv">
                     <h2>Powierzchnia Lasu...:</h2>
                     <form>
@@ -71,7 +71,7 @@ export default function AreaPage() {
                         onInput={addChoice}>
                         </input>
                         <label>m2</label>
-                        <Link to={{
+                        <Link className='link' to={{
                         pathname: '/notImplemented',
                     }}>Dalej</Link>
                     </form>

@@ -26,7 +26,7 @@ export default function WaterReservoirPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Zbiorniki wodne: </h2>
                 <form>
@@ -56,7 +56,7 @@ export default function WaterReservoirPage() {
                             Brak
                         </label>
                     </div>
-                    <Link to={{
+                    <Link className='link' to={{
                         pathname: '/masl',
                         state: {
                             state: choiceList

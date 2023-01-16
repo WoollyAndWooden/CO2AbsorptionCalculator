@@ -1,0 +1,19 @@
+body, html {
+    height: 100%;
+  }
+  .bg {
+    background-image: url("las.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.result {
+    margin-top: 10px;
+    font-weight:750;
+}
+
+.link {
+    margin-left: 25px;
+}

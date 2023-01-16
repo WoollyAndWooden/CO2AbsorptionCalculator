@@ -25,7 +25,7 @@ export default function GrowingSeasonPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Wysokość n.p.m</h2>
                 <form>
@@ -44,7 +44,7 @@ export default function GrowingSeasonPage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                  <Link className='link' to={{
                         pathname: '/check',
                         state: {
                             state: choiceList

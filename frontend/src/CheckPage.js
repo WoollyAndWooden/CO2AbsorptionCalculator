@@ -3,6 +3,9 @@ import { useRef } from 'react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
+import { Button, Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './css/test.css'
 
 
 export default function CheckPage() {
@@ -32,10 +35,10 @@ export default function CheckPage() {
     }
     
     return (
-    <div>
+    <div className='bg'>
         <div className="centerdiv">
             <h2>Wybrane Opcje:</h2>
-            <form className='next'>
+            <Form className='next'>
                 <div className='column'>
                     <label>Las</label>
                     <label>Pole powierzchni</label>
@@ -50,19 +53,19 @@ export default function CheckPage() {
                 <div className='column'>
                 {choiceList.map(element => (
                     <div >
-                        <div>{element.value}</div>
+                        <label>{element.value}</label>
                     </div>             
                 ))}
                 </div>
-            </form>
-            <div>
-                <label>Wynik</label>
-                <div>{result} t/ha</div>
+            </Form>
+            <div className='result'>
+                <label>Wynik: &nbsp;</label>
+                <label>{result} t/ha</label>
             </div>
             
-            <button ref={buttonRef} onClick={callApi}>Oblicz</button>
+            <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
 
-                <Link to={{
+                <Link className='link' to={{
                         pathname: '/',
                     }}>Wróć do początku</Link>
         </div>
