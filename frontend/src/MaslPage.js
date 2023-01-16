@@ -62,7 +62,7 @@ export default function MaslPage() {
                         </div>
                     ))}
                     <div>{description}</div>
-                    <Link className='link' to={{
+                    <Link to={{
                         pathname: '/season',
                         state: {
                             state: choiceList

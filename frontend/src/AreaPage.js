@@ -44,7 +44,7 @@ export default function AreaPage() {
                         onChange={(event) => checkValue(event, 'change')}
                         onInput={addChoice}>
                         </input>
-                        <label>m2</label>
+                        <label className='label'>m2</label>
                         <Link className='link' to={{
                         pathname: '/averageAge',
                         state: {

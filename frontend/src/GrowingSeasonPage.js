@@ -44,7 +44,7 @@ export default function GrowingSeasonPage() {
                             </label>
                         </div>
                     ))}
-                  <Link className='link' to={{
+                    <Link to={{
                         pathname: '/check',
                         state: {
                             state: choiceList

@@ -37,7 +37,7 @@ export default function AverageAgePage() {
                             </label>
                         </div>
                     ))}
-                  <Link className='link' to={{
+                  <Link to={{
                         pathname: '/habitat',
                         state: {
                             state: choiceList

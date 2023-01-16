@@ -42,7 +42,7 @@ export default function HabitatPage() {
                             </label>
                         </div>
                     ))}
-                   <Link className='link' to={{
+                   <Link to={{
                         pathname: '/degree',
                         state: {
                             state: choiceList

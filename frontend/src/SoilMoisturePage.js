@@ -55,7 +55,7 @@ export default function SoilMoisturePage() {
                             </label>
                         </div>
                     ))}
-                   <Link className='link' to={{
+                    <Link to={{
                         pathname: '/reservoir',
                         state: {
                             state: choiceList

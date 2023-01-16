@@ -51,7 +51,7 @@ export default function DegreePage() {
                             </label>
                         </div>
                     ))}
-                   <Link className='link' to={{
+                    <Link to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList

@@ -56,7 +56,7 @@ export default function WaterReservoirPage() {
                             Brak
                         </label>
                     </div>
-                    <Link className='link' to={{
+                    <Link to={{
                         pathname: '/masl',
                         state: {
                             state: choiceList

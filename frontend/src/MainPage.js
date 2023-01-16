@@ -32,7 +32,7 @@ export default function MainPage() {
                         <option value="mature" ref={inputRef}>Dojrzałe lasy</option>
                         <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>
-                    <label>wiek lasu</label>
+                    <label className='label'>wiek lasu</label>
                     <Link className='link' to={{
                         pathname: '/area',
                         state: {
