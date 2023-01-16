@@ -1,7 +1,9 @@
 package com.co2absorptioncalculator.co2absorptioncalculator;
 
 import com.co2absorptioncalculator.co2absorptioncalculator.calculator.FactorCalculator;
+import com.co2absorptioncalculator.co2absorptioncalculator.calculator.exception.IncorrectDataException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,6 +11,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 public class FactorCalculatorTest {
+
+    private static Stream<Arguments> incorrectValues() {
+        return Stream.of(
+                Arguments.of(""),
+                Arguments.of("45wewer234324qeqwe12eqe")
+        );
+    }
+
+
 
     private static Stream<Arguments> habitatValues() {
         return Stream.of(
@@ -23,6 +34,7 @@ public class FactorCalculatorTest {
                 )
         );
     }
+
     private static Stream<Arguments> ageValues() {
         return Stream.of(
                 Arguments.of(
@@ -144,31 +156,106 @@ public class FactorCalculatorTest {
 
     @ParameterizedTest
     @MethodSource("habitatValues")
-    public void testHabitatValue(String habitat, Double expectedValue) {
+    public void testHabitatValue(String habitat, Double expectedValue) throws IncorrectDataException {
         Assertions.assertEquals(expectedValue, FactorCalculator.getHabitatValue(habitat));
     }
 
     @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testHabitatValue(Object arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue((String) arg);
+        });
+    }
+
+    @Test
+    public void testNullHabitatValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
     @MethodSource("ageValues")
-    public void testAgeValues(String age, Double expectedValue) {
+    public void testAgeValues(String age, Double expectedValue) throws IncorrectDataException {
         Assertions.assertEquals(expectedValue, FactorCalculator.getAgeValue(age));
     }
 
     @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectAgeValues(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullAgeValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
     @MethodSource("soilValues")
-    public void testSoilValues(String soil, Double expectedValue) {
+    public void testSoilValues(String soil, Double expectedValue) throws IncorrectDataException {
         Assertions.assertEquals(expectedValue, FactorCalculator.getSoilValue(soil));
     }
 
     @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectSoilValues(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullSoilValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
     @MethodSource("landValues")
-    public void testLandValues(String land, Double expectedValue) {
+    public void testLandValues(String land, Double expectedValue) throws IncorrectDataException {
         Assertions.assertEquals(expectedValue, FactorCalculator.getLandValue(land));
     }
 
     @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectLandValue(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullLandValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
     @MethodSource("locationValues")
-    public void testLocationValues(String location, Double expectedValue) {
+    public void testLocationValues(String location, Double expectedValue) throws IncorrectDataException {
         Assertions.assertEquals(expectedValue, FactorCalculator.getLocationValue(location));
+    }
+
+    @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectLocationValues(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullLocationValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
     }
 }

@@ -9,5 +9,4 @@ public class Co2AbsorptionCalculatorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Co2AbsorptionCalculatorApplication.class, args);
 	}
-
 }

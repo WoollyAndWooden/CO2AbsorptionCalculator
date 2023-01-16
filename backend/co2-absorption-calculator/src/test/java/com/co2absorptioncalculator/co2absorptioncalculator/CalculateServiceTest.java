@@ -1,5 +1,6 @@
 package com.co2absorptioncalculator.co2absorptioncalculator;
 
+import com.co2absorptioncalculator.co2absorptioncalculator.calculator.exception.IncorrectDataException;
 import com.co2absorptioncalculator.co2absorptioncalculator.service.CalculateService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,7 +31,7 @@ public class CalculateServiceTest {
     @ParameterizedTest
     @MethodSource("arguments")
     public void testCalculate(String forestType, Double area, String age, String habitat, Double degreeOfNaturalness,
-                              String soil, String waterReservoir, String land, String location, Double expectedResult) {
+                              String soil, String waterReservoir, String land, String location, Double expectedResult) throws IncorrectDataException {
 
             if(forestType.equals("mature")) {
                 Double calculation = calculateService.calculate(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
