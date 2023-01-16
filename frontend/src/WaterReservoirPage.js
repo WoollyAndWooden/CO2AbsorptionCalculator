@@ -26,7 +26,7 @@ export default function WaterReservoirPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Zbiorniki wodne: </h2>
                 <form>

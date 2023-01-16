@@ -32,7 +32,7 @@ export default function DegreePage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Stopień Naturalności:</h2>
                 <form>

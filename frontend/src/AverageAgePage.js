@@ -18,7 +18,7 @@ export default function AverageAgePage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Średni wiek lasu:</h2>
                 <form>
@@ -37,7 +37,7 @@ export default function AverageAgePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                  <Link to={{
                         pathname: '/habitat',
                         state: {
                             state: choiceList

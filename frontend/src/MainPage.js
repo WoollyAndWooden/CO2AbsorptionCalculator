@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/page.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function MainPage() {
 
@@ -22,7 +23,7 @@ export default function MainPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
@@ -30,8 +31,8 @@ export default function MainPage() {
                         <option value="mature" ref={inputRef}>Dojrzałe lasy</option>
                         <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>
-                    <label>wiek lasu</label>
-                    <Link to={{
+                    <label className='label'>wiek lasu</label>
+                    <Link className='link' to={{
                         pathname: '/area',
                         state: {
                             state: choiceList

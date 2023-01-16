@@ -42,7 +42,7 @@ export default function MaslPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Wysokość n.p.m:</h2>
                 <form>

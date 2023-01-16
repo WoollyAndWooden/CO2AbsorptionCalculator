@@ -1,6 +1,10 @@
 .centerdiv {
+    background-color: white;
     max-width: 500px;
     margin: auto;
+    padding: 20px;
+    border-radius: 25px;
+    border: 5px solid black;
 }
 
 .next {
@@ -13,3 +17,26 @@
     flex-direction: column;
     margin-left: 50px;
 }
+
+.label {
+    margin-left: 10px;
+}
+
+.bg {
+    background-image: url("las.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.result {
+    margin-top: 10px;
+    font-weight:750;
+}
+
+.link {
+    margin-left: 25px;
+}
+
+

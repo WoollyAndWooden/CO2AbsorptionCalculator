@@ -23,7 +23,7 @@ export default function HabitatPage() {
     }
 
     return (
-        <div>
+        <div className='bg'>
             <div className="centerdiv">
                 <h2>Siedlisko:</h2>
                 <form>
@@ -42,7 +42,7 @@ export default function HabitatPage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                   <Link to={{
                         pathname: '/degree',
                         state: {
                             state: choiceList
