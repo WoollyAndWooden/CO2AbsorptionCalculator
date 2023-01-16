@@ -14,14 +14,13 @@ public class CalculateService {
             Double k = degree;
             Double z = k;
             Double habitatValue = FactorCalculator.getHabitatValue(habitat);
-            Double x = FactorCalculator.getX(age);
-            Double a = FactorCalculator.getA(soil);
-            Double b = FactorCalculator.getB(land);
-            Double C = FactorCalculator.getC(location);
+            Double x = FactorCalculator.getAgeValue(age);
+            Double a = FactorCalculator.getSoilValue(soil);
+            Double b = FactorCalculator.getLandValue(land);
+            Double C = FactorCalculator.getLocationValue(location);
 
             return (habitatValue * (k * x * z * a * b * C)) * area / DIVISOR;
         }
-
         return 0d;
     }
 }
