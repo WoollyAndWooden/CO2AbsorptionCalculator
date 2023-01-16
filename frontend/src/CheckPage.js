@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './css/test.css'
 
 
 export default function CheckPage() {

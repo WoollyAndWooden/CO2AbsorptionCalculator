@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/page.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './css/test.css'
 
 export default function MainPage() {
 
