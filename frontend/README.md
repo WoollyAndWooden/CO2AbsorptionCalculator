@@ -1,3 +1,10 @@
+# Pa11y notice
+To run pa11y, accessibility testing tool, use pa11y localhost:3000/<pageYouWantToTest>
+To only show most important errors, use --ignore "warning, notice" option
+Before You run pa11y, run this command:
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+It will allow powershell to execute scripts in scope of this process
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
