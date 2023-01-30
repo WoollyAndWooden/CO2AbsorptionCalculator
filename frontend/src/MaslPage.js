@@ -15,8 +15,14 @@ export default function MaslPage() {
 
 
     function handleChange(event){
-        if(choiceList.length === 8) {
-            choiceList.pop()
+        if(choiceList[0].tag === 'mature') {
+            if(choiceList.length === 8) {
+                choiceList.pop()
+            }
+        } else {
+            if(choiceList.length === 9) {
+                choiceList.pop()
+            }
         }
         const value = event.target.value
         var choice;

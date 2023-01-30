@@ -7,14 +7,14 @@ export default function PercentagesPage() {
 
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
-    const [selectedOptions, setSelectedOptions] = useState([0, 0, 0]);
+    const [selectedOptions, setSelectedOptions] = useState(Array(choiceList[3].length).fill(0));
     const inputRef = useRef()
 
 
     function handleInputs(event, index) {
         setSelectedOptions(prevSelectedOptions => {
           const updatedOptions = [...prevSelectedOptions];
-          updatedOptions[index] = event.target.value;
+          updatedOptions[index] = Number(event.target.value);
           return updatedOptions;
         });
       }
@@ -27,7 +27,7 @@ export default function PercentagesPage() {
   return (
     <div className='bg'>
             <div className="centerdiv">
-                <h2>Wybierz procenty</h2>
+                <h2>Wybierz procentowy udział wybranych gatunków dominujących</h2>
                 <Form className='next'>
                 <div className='column'>
                 {choiceList[3].map((element, index) => (

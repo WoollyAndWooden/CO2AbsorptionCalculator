@@ -10,19 +10,19 @@ export default function HowManyTreesPage() {
     
 
     function handleChange(event){
-        if(choiceList.length === 4) {
+        if(choiceList.length === 6) {
             choiceList.pop()
         }
 
 
-        const newList = choiceList.concat({value:event.value})
+        const newList = choiceList.concat({value:event.target.value})
         setChoiceList(newList)
     }
 
     return (
         <div className='bg'>
             <div className="centerdiv">
-                <h2>ilość sadzonek na ha:</h2>
+                <h2>Ilość sadzonek na ha:</h2>
                 {console.log(choiceList)}
                 <form>
                     {habitatTypes.map(element => (

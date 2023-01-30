@@ -25,7 +25,7 @@ export default function DominantSpecies() {
             console.log(value)
 
             if(selectedOptions.length >= 3) {
-                alert("TOO MUCH")
+                alert("Możesz wybrać maksymalnie trzy gatunki!")
                 return
             }
             if(selectedOptions.includes(value)) {
@@ -46,7 +46,7 @@ export default function DominantSpecies() {
     return (
         <div className='bg'>
             <div className="centerdiv">
-                <h2>Rodzaj podłoża:</h2>
+                <h2>Dominujące Gatunki, wybierz maksymalnie trzy:</h2>
                 <form>
                     {treeTypes.map((element, index) => (
                         <div>

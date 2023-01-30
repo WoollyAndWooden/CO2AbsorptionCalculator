@@ -8,9 +8,17 @@ export default function SoilMoisturePage() {
     const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
 
     function handleChange(event){
-        if(choiceList.length === 6) {
-            choiceList.pop()
+        if(choiceList[0] === 'mature') {
+            if(choiceList.length === 6) {
+                choiceList.pop()
+            }
+        } else {
+            if(choiceList.length === 7) {
+                choiceList.pop()
+            }
+
         }
+        
         const value = event.target.value
         var choice;
         switch(value){

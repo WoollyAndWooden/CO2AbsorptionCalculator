@@ -14,8 +14,14 @@ export default function GrowingSeasonPage() {
     ]
 
     function handleChange(event){
-        if(choiceList.length === 9) {
-            choiceList.pop()
+        if(choiceList[0].tag === 'mature') {
+            if(choiceList.length === 9) {
+                choiceList.pop()
+            }
+        } else {
+            if(choiceList.length === 10) {
+                choiceList.pop()
+            }
         }
         const value = event.target.value
         var choice = {value: value}
@@ -27,7 +33,7 @@ export default function GrowingSeasonPage() {
     return (
         <div className='bg'>
             <div className="centerdiv">
-                <h2>Wysokość n.p.m</h2>
+                <h2>Lokacja</h2>
                 <form>
                     {places.map(element => (
                         <div>
