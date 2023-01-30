@@ -72,7 +72,10 @@ export default function AreaPage() {
                         </input>
                         <label>m2</label>
                         <Link className='link' to={{
-                        pathname: '/notImplemented',
+                        pathname: '/groundtype',
+                        state: {
+                            state: choiceList
+                        }
                     }}>Dalej</Link>
                     </form>
                 </div>
