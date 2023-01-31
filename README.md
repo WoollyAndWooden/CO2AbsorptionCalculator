@@ -25,7 +25,7 @@ Command `mvn spring-boot:run / mvnw spring-boot:run` will run the application.
 
 # Frontend
 
-Daniel Knopf (@WoollyAndWooden, potentially also as @dknopf0) will contribute to the frontend side of the app, using javascript with react libraries.
+Project located in the /frontend directory, developed using React and react-bootstrap framework, tested for accessibility with pa11y tool.
 
 # Running App
 
