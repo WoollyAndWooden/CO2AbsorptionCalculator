@@ -5,7 +5,7 @@ The goal of this project is to pass the semester, and create a proof of concept 
 
 # Contributors
 
-@darnoker, @WoollyAndWooden. Students at the University of Gdańsk.
+@darnoker (Konrad Głąb), @WoollyAndWooden (Daniel Knopf). Students at the University of Gdańsk.
 
 # Backend
 
@@ -25,7 +25,13 @@ Command `mvn spring-boot:run / mvnw spring-boot:run` will run the application.
 
 # Frontend
 
-Daniel Knopf (@WoollyAndWooden, potentially also as @dknopf0) will contribute to the frontend side of the app, using javascript with react libraries.
+Project located in the /frontend directory. Developed using React framework.
+
+Used technologies: <br />
+- React 18.2.0
+- react-bootstrap 2.7.0
+- pally-ci testing tool
+
 
 # Running App
 
