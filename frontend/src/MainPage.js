@@ -27,7 +27,7 @@ export default function MainPage() {
             <div className="centerdiv">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
-                    <select  onChange={addChoice}>
+                    <select  onChange={addChoice} aria-label="Wybierz wiek lasu">
                         <option value="mature" ref={inputRef}>Dojrzałe lasy</option>
                         <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>

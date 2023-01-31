@@ -1,0 +1,186 @@
+{
+
+    "defaults": {
+        "timeout":90000000,
+        "threshold": 1,
+        "viewport": {
+            "width": 320,
+            "height": 480
+        },
+        "reporters": [
+            "cli",
+            "pa11y-reporter-html"
+        ]
+    },
+    "urls": [
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\main.png"
+        },
+        {
+        "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\area.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a[class='link']",
+                "wait for url to be http://localhost:3000/area"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\averageAge.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\habitat.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "wait for url to be http://localhost:3000/habitat"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\degree.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "set field input to option[value='Swamp-birch']",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\soil.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "set field input to option[value='Swamp-birch']",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree",
+                "click element a",
+                "wait for url to be http://localhost:3000/soil"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\reservoir.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "set field input to option[value='Swamp-birch']",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree",
+                "click element a",
+                "wait for url to be http://localhost:3000/soil",
+                "click element a",
+                "wait for url to be http://localhost:3000/reservoir"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\masl.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "set field input to option[value='Swamp-birch']",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree",
+                "click element a",
+                "wait for url to be http://localhost:3000/soil",
+                "click element a",
+                "wait for url to be http://localhost:3000/reservoir",
+                "click element a",
+                "wait for url to be http://localhost:3000/masl"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\season.png",
+            "actions": [
+                "set field select to option[value='mature']",
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "set field input to 5.00",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "set field input to option[value='51-70']",
+                "click element a",
+                "set field input to option[value='Swamp-birch']",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree",
+                "click element a",
+                "wait for url to be http://localhost:3000/soil",
+                "click element a",
+                "wait for url to be http://localhost:3000/reservoir",
+                "click element a",
+                "wait for url to be http://localhost:3000/masl",
+                "click element a",
+                "wait for url to be http://localhost:3000/season"
+            ]
+        },
+        {
+            "url": "http://localhost:3000/",
+            "screenCapture": "pa11yTests\\check.png",
+            "actions": [
+                "click element a",
+                "wait for url to be http://localhost:3000/area",
+                "click element a",
+                "wait for url to be http://localhost:3000/averageAge",
+                "click element a",
+                "wait for url to be http://localhost:3000/habitat",
+                "click element a",
+                "wait for url to be http://localhost:3000/degree",
+                "click element a",
+                "wait for url to be http://localhost:3000/soil",
+                "click element a",
+                "wait for url to be http://localhost:3000/reservoir",
+                "click element a",
+                "wait for url to be http://localhost:3000/masl",
+                "click element a",
+                "wait for url to be http://localhost:3000/season",
+                "click element a",
+                "wait for url to be http://localhost:3000/check"
+            ]
+        }
+    ]
+}
