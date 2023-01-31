@@ -5,17 +5,41 @@ The goal of this project is to pass the semester, and create a proof of concept 
 
 # Contributors
 
+@darnoker, @WoollyAndWooden. Students at the University of Gdańsk.
+
 # Backend
 
-Konrad Głąb (@darnoker) will be responsible for backend development in java, using (insert when chosen) framework.
+Project located in the /backend directory, developed using SpringBoot framework:
+
+Used technologies: <br />
+- Java 17 
+- Spring Boot 2.7.5 
+- Maven 3.8.6 
+
+Libraries used:
+- Apache HttpClient
+- Junit 5 <br />
+
+You can use `mvn package / mvnw package`, then Maven will compile and run tests <br />
+Command `mvn spring-boot:run / mvnw spring-boot:run` will run the application. 
 
 # Frontend
 
 Daniel Knopf (@WoollyAndWooden, potentially also as @dknopf0) will contribute to the frontend side of the app, using javascript with react libraries.
 
-# Branching strategy
+# Running App
 
-DO NOT push to main, unless code is confirmed to work. Branch out with the current code version using branching template of [front][back]end/IssueCurrentlyWorkingOn.
-Start commit with [Jira Story number] (For example, [CO2AC-1] and a short description of what was done, then create Pull Request. It is easier to manage changes that way.
+StartApp.bat is responsible for running the application. If called without parameters, it will start both backend and frontend and its tests.
 
-Update Readme if neccessary.
+Firt parameter:
+
+- backend
+- frontend
+- full (both backend and frontend)
+
+Second parameter
+
+- run
+- test
+- install
+
