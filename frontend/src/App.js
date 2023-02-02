@@ -11,6 +11,10 @@ import SoilMoisturePage from './SoilMoisturePage';
 import WaterReservoirPage from './WaterReservoirPage';
 import MaslPage from './MaslPage';
 import GrowingSeasonPage from './GrowingSeasonPage';
+import GroundTypePage from './GroundTypePage';
+import HowManyTreesPage from './HowManyTreesPage';
+import DominantSpecies from './DominantSpecies';
+import PercentagesPage from './PercentagesPage';
 
 function App() {
     
@@ -26,6 +30,10 @@ function App() {
         <Route exact path="/masl" component = {MaslPage} />
         <Route exact path="/season" component = {GrowingSeasonPage} />
         <Route exact path="/check" component = {CheckPage} />
+        <Route exact path="/groundtype" component = {GroundTypePage} />
+        <Route exact path="/howmanytrees" component = {HowManyTreesPage} />
+        <Route exact path="/dominant" component = {DominantSpecies} />
+        <Route exact path="/percentages" component = {PercentagesPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />  
     </Switch>      
   );

@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom'
 export default function GrowingSeasonPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)    
+
     const inputRef = useRef()
     const places = [
         "woj. suwalskie", "woj. warmińsko - mazurskie", "woj. podlaskie", "Mazowsze wschodnie",
@@ -14,8 +16,15 @@ export default function GrowingSeasonPage() {
     ]
 
     function handleChange(event){
-        if(choiceList.length === 9) {
-            choiceList.pop()
+        setSelected(true)
+        if(choiceList[0].tag === 'mature') {
+            if(choiceList.length === 9) {
+                choiceList.pop()
+            }
+        } else {
+            if(choiceList.length === 10) {
+                choiceList.pop()
+            }
         }
         const value = event.target.value
         var choice = {value: value}
@@ -24,15 +33,22 @@ export default function GrowingSeasonPage() {
         setChoiceList(newList)
     }
 
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
+
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
-                <h2>Wysokość n.p.m</h2>
+                <h2>Lokacja</h2>
                 <form>
                     {places.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio'  
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -44,14 +60,21 @@ export default function GrowingSeasonPage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                    
+                </form>
+
+                <div className='forlink'>
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/check',
                         state: {
                             state: choiceList
                         }
                     }}>Oblicz</Link>
-                </form>
+
+                </div>
+
+                
             </div>
-        </div>
+        </body>
     )
 }

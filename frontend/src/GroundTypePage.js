@@ -1,53 +1,39 @@
 import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export default function MaslPage() {
+
+export default function GroundTypePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
-    const [isSelected, setSelected] = useState(false)    
-
+    const [isSelected, setSelected] = useState(false)  
+    // const [selectedOptions, setSelectedOptions] = useState([]);
     const inputRef = useRef()
-    const landforms = ["Niziny", "Wyżyny", "Góry"]
-    const descriptions = [
-        "Niziny - Obszary o wysokości bezwzględnej do 300 m n.p.m.",
-        "Wyżyny - Obszary o wysokości powyżej 300 m n.p.m. i wysokościach względnych nieprzekraczających 300 m.",
-        "Góry - Obszary o wysokości powyżej 300 m n.p.m. i różnicach wysokości względnych powyżej 300 m."
-    ]
-    const [description, setDescription] = useState("")
-
+    const habitatTypes = ["po wyrębie", "porolna", "łąka"]
+        
+    
 
     function handleChange(event){
         setSelected(true)
-        if(choiceList[0].tag === 'mature') {
-            if(choiceList.length === 8) {
-                choiceList.pop()
-            }
-        } else {
-            if(choiceList.length === 9) {
-                choiceList.pop()
-            }
+        if(choiceList.length === 3) {
+            choiceList.pop()
         }
-        const value = event.target.value
         var choice;
-        var i = 0
-        switch(value){
-            case 'Niziny':
-                choice = {tag: 'lowlands', value: value}
-                i = 0
+
+
+        switch(event.target.value){
+            case 'po wyrębie':
+                choice = {tag: 'after felling', value: event.target.value}
                 break
-            case 'Wyżyny':
-                choice = {tag : 'highlands', value: value}
-                i = 1
+            case 'porolna':
+                choice = {tag : 'post-agricultural', value: event.target.value}
                 break
-            case 'Góry':
-                choice = {tag : 'mountains', value: value}
-                i = 2
+            case 'łąka':
+                choice = {tag : 'meadow', value: event.target.value}
                 break
         }
 
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
-        setDescription(descriptions[i])
     }
 
     function goToAnotherPage(event) {
@@ -55,13 +41,12 @@ export default function MaslPage() {
             event.preventDefault()
         }
     }
-
     return (
         <body>
             <div className="centerdiv">
-                <h2>Wysokość n.p.m:</h2>
+                <h2>Rodzaj podłoża:</h2>
                 <form>
-                {landforms.map(element => (
+                    {habitatTypes.map(element => (
                         <div>
                             <label>
                                 <input
@@ -77,18 +62,19 @@ export default function MaslPage() {
                             </label>
                         </div>
                     ))}
-                    <div>{description}</div>
                     
                 </form>
+
                 <div className='forlink'>
                 <Link onClick={goToAnotherPage} className='link' to={{
-                        pathname: '/season',
+                        pathname: '/dominant',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
 
                 </div>
+
                 
             </div>
         </body>

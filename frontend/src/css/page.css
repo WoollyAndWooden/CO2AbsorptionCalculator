@@ -5,38 +5,132 @@
     padding: 20px;
     border-radius: 25px;
     border: 5px solid black;
+    display: grid;
+}
+
+.checkCenter {
+    grid-template-areas:
+            "header header"
+            "content content"
+            "footer footer";
+}
+
+.checkHeader {
+    grid-area: header;
+}
+
+.content {
+    display: grid;
+    grid-area: content;
+    grid-template-columns: 50% 50%;
+    grid-auto-flow: column;
+}
+.mature {
+    grid-template-rows: repeat(9, 1fr);
+}
+.young {
+    grid-template-rows: repeat(10, 1fr);
+}
+.contentName {
+    grid-column: 1 / span 1;
+    grid-row: span 1;
+}
+
+
+.column {
+    display: grid;
+    margin-left: 50px;
+}
+
+.columnContentValue {
+    display: grid;
+    margin-left: 50px;
+    grid-column: 2 / span 1;
+}
+
+
+.contentValue {
+    grid-column: 2 / span 1;
+}
+
+.columnContentValue::first-letter {
+    text-transform: uppercase;
+}
+.contentValue::first-letter {
+    text-transform: uppercase;
+}
+.footer {
+    display: grid;
+    grid-area: footer;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
 }
 
 .next {
-    display: flex;
-    flex-direction: row;
+    margin-bottom: 50px;
 }
 
-.column {
-    display: flex;
-    flex-direction: column;
-    margin-left: 50px;
-}
+
 
 .label {
     margin-left: 10px;
 }
 
-.bg {
+.youngend {
+    padding-top: 50px;
+}
+
+body {
     background-image: url("las.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
+.checkBody {
+    height: 100%;
+}
 .result {
     margin-top: 10px;
     font-weight:750;
 }
 
 .link {
-    margin-left: 25px;
+    float: right;
+    background-color: #1d1993;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+
 }
 
+.endlink {
+    float: left;
+    background-color: #1d1993;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
 
+    
+}
+
+.cos {
+    float: right;
+}
+
+.forlink {
+    display: grid;
+    padding-bottom: 30px;
+    justify-items: center;
+}
+.forlink a {
+    margin-top: 10px;
+}
+input[type]{
+    margin-right: 10px;
+}

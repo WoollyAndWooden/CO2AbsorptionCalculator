@@ -23,7 +23,7 @@ export default function MainPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
@@ -32,14 +32,19 @@ export default function MainPage() {
                         <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>
                     <label className='label'>wiek lasu</label>
-                    <Link className='link' to={{
+                  
+                </form>
+                <div className='forlink'>
+                <Link className='link' to={{
                         pathname: '/area',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+                </div>
+
+                
             </div>
-        </div>
+        </body>
     )
 }
