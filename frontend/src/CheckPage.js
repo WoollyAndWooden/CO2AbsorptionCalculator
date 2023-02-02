@@ -100,7 +100,7 @@ export default function CheckPage() {
 
     if(choiceList[0].tag === 'mature') {
         return (
-            <div className='bg'>
+            <body>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content'>
@@ -114,7 +114,7 @@ export default function CheckPage() {
                                 <label className='column contentName'>Ukształtowanie terenu</label>
                                 <label className='column contentName'>Lokacja</label>
                             {choiceList.map(element => (
-                                    <label  className='column contentValue'>{element.value}</label>
+                                    <label className='columnContentValue'>{element.value}</label>
                             ))}
                         </Form>
                     
@@ -132,7 +132,7 @@ export default function CheckPage() {
 
 
                 </div>
-            </div>
+            </body>
           )
     } else {
         return (

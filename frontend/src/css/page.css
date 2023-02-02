@@ -32,8 +32,28 @@
     grid-row: span 1;
 }
 
+
+.column {
+    display: grid;
+    margin-left: 50px;
+}
+
+.columnContentValue {
+    display: grid;
+    margin-left: 50px;
+    grid-column: 2 / span 1;
+}
+
+
 .contentValue {
     grid-column: 2 / span 1;
+}
+
+.columnContentValue::first-letter {
+    text-transform: uppercase;
+}
+.contentValue::first-letter {
+    text-transform: uppercase;
 }
 .footer {
     display: grid;
@@ -46,10 +66,7 @@
     margin-bottom: 50px;
 }
 
-.column {
-    display: grid;
-    margin-left: 50px;
-}
+
 
 .label {
     margin-left: 10px;
