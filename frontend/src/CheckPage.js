@@ -101,86 +101,77 @@ export default function CheckPage() {
     if(choiceList[0].tag === 'mature') {
         return (
             <div className='bg'>
-                <div className="centerdiv">
-                    <h2>Wybrane Opcje:</h2>
-                    <Form className='next'>
-                        <div className='column'>
-                            <label>Las</label>
-                            <label>Pole powierzchni</label>
-                            <label>Wiek</label>
-                            <label>Siedlisko</label>
-                            <label>Stopień</label>
-                            <label>Gleba</label>
-                            <label>Rezerwy Wody</label>
-                            <label>Ukształtowanie terenu</label>
-                            <label>Lokacja</label>
+                <div className="centerdiv checkCenter">
+                    <h2 className="checkHeader">Wybrane Opcje:</h2>
+                        <Form className='next content'>
+                                <label className='column contentName'>Las</label>
+                                <label className='column contentName'>Pole powierzchni</label>
+                                <label className='column contentName'>Wiek</label>
+                                <label className='column contentName'>Siedlisko</label>
+                                <label className='column contentName'>Stopień</label>
+                                <label className='column contentName'>Gleba</label>
+                                <label className='column contentName'>Rezerwy Wody</label>
+                                <label className='column contentName'>Ukształtowanie terenu</label>
+                                <label className='column contentName'>Lokacja</label>
+                            {choiceList.map(element => (
+                                    <label  className='column contentValue'>{element.value}</label>
+                            ))}
+                        </Form>
+                    <div className="footer">
+                        <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
+
+                        <div className='result'>
+                            <label>Wynik: &nbsp;</label>
+                            <label>{result} t/ha</label>
                         </div>
-                        <div className='column'>
-                        {choiceList.map(element => (
-                            <div >
-                                <label>{element.value}</label>
-                            </div>             
-                        ))}
-                        </div>
-                    </Form>
-                    <div className='result'>
-                        <label>Wynik: &nbsp;</label>
-                        <label>{result} t/ha</label>
-                    </div>
-                    
-                    <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
-        
+
                         <Link className='link' to={{
                                 pathname: '/',
                             }}>Wróć do początku</Link>
+                    </div>
                 </div>
             </div>
           )
     } else {
         return (
             <div className='bg'>
-                <div className="centerdiv">
-                    <h2>Wybrane Opcje:</h2>
-                    <Form className='next'>
-                        <div className='column'>
-                            <label>Las</label>
-                            <label>Pole powierzchni</label>
-                            <label>Rodzaj podłoża</label>
-                            <label>Dominujące Gatunki</label>
-                            <label>Liczba drzew</label>
-                            <label>Gleba</label>
-                            <label>Rezerwy Wody</label>
-                            <label>Ukształtowanie terenu</label>
-                            <label>Lokacja</label>
+                <div className="centerdiv checkCenter">
+                    <h2 className="checkHeader">Wybrane Opcje:</h2>
+                        <Form className='next content'>
+                                <label className="contentName">Las</label>
+                                <label className="contentName">Pole powierzchni</label>
+                                <label className="contentName">Rodzaj podłoża</label>
+                                <label className="contentName">Dominujący Gatunek 1</label>
+                                <label className="contentName">Dominujący Gatunek 2</label>
+                                <label className="contentName">Liczba drzew</label>
+                                <label className="contentName">Gleba</label>
+                                <label className="contentName">Rezerwy Wody</label>
+                                <label className="contentName">Ukształtowanie terenu</label>
+                                <label className="contentName">Lokacja</label>
+                            {choiceList.map((element, index) => {
+                                if (index === 3) {
+                                    return choiceList[index].map((subelement, subindex) => (
+                                        <label className="contentValue" key={subindex}>{subelement}</label>
+                                    ));
+                                } else {
+                                    return (
+                                        <label className="contentValue">{element.value}</label>
+                                    );
+                                }
+                                })}
+                        </Form>
+                    <div className="footer">
+                        <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
+
+                        <div className='result'>
+                            <label>Wynik: &nbsp;</label>
+                            <label>{result} t/ha</label>
                         </div>
-                        <div className='column'>
-                        {choiceList.map((element, index) => {
-                            if (index === 3) {
-                                return choiceList[index].map((subelement, subindex) => (
-                                <div className='column'>
-                                    <label key={subindex}>{subelement}</label>
-                                </div>
-                                ));
-                            } else {
-                                return (
-                                    <div>
-                                    <label>{element.value}</label>
-                                    </div>
-                                );
-                            }
-                            })}
-                        </div>
-                    </Form>
-                    <div className='result'>
-                        <label>Wynik: &nbsp;</label>
-                        <label>{result} t/ha</label>
-                    </div>
-                    
-                    <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
-        
+
                         <Link className='link' to={{
-                                pathname: '/',
-                            }}>Wróć do początku</Link>
+                            pathname: '/',
+                        }}>Wróć do początku</Link>
+                    </div>
                 </div>
             </div>
         )   
