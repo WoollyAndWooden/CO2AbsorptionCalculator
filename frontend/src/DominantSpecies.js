@@ -78,7 +78,7 @@ export default function DominantSpecies() {
         <body>
             {checkSelected}
             <div className="centerdiv">
-                <h2>Dominujące Gatunki, wybierz maksymalnie trzy:</h2>
+                <h2>Wybierz max. 3 gatunki</h2>
                 <form>
                     {treeTypes.map((element, index) => (
                         <div>

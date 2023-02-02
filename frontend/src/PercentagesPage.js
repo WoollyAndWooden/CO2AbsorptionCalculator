@@ -49,7 +49,7 @@ export default function PercentagesPage() {
   return (
     <body>
             <div className="centerdiv">
-                <h2>Wybierz procentowy udział wybranych gatunków dominujących</h2>
+                <h2>Wpisz procentowy udział każdego z gatunków w ekosystemie leśnym. Suma nie może być mniejsza niż 60%</h2>
                 <Form className='next'>
                 <div className='column'>
                 {choiceList[3].map((element, index) => {
