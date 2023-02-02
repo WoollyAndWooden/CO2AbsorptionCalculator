@@ -94,8 +94,6 @@ export default function CheckPage() {
                 .catch(error => console.log(error))
             }
         }
-
-
     }
 
     if(choiceList[0].tag === 'mature') {
@@ -156,6 +154,8 @@ export default function CheckPage() {
                                     return choiceList[index].map((subelement, subindex) => (
                                         <label className="contentValue" key={subindex}>{subelement}</label>
                                     ));
+                                } else if(index === 4) {
+                                    return
                                 } else {
                                     return (
                                         <label className="contentValue">{element.value}</label>
