@@ -36,7 +36,20 @@
 }
 
 .link {
-    margin-left: 25px;
+    float: right;
+    background-color: #1d1993;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 25px;
+
+}
+
+.forlink {
+    padding-bottom: 30px;
+}
+.radio {
+    margin-right: 5px;
 }
 
 
