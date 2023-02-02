@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom'
 
@@ -6,6 +6,7 @@ export default function DominantSpecies() {
 
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [selected, setSelected] = useState(false)
     const [selectedOptions, setSelectedOptions] = useState([]);
     const inputRef = useRef()
     const treeTypes = [
@@ -22,39 +23,71 @@ export default function DominantSpecies() {
 
     function handleChange(event){
             const { value } = event.target;
-            console.log(value)
 
-            if(selectedOptions.length >= 3) {
-                alert("Możesz wybrać maksymalnie trzy gatunki!")
-                return
-            }
+            let newList;
             if(selectedOptions.includes(value)) {
-                console.log("include")
-                setSelectedOptions(selectedOptions.filter((v) => v !== value))
+                newList = selectedOptions.filter(v => v !== value)
+                setSelectedOptions(newList)
             } else {
-                console.log("NONONON")
-                setSelectedOptions([...selectedOptions, value])
+                if(selectedOptions.length >= 3) {
+                    return
+                }
+                newList = [...selectedOptions, value]
+                setSelectedOptions(newList)
             }
+            checkSelected(newList)
+    }
+
+    function checkSelected(newList) {
+        if(newList.length > 0) {
+            setSelected(true)
+        } else {
+            setSelected(false)
+        }
     }
     
-    function addToChoiceList() {
-        const newList = choiceList.push(selectedOptions)
-        setChoiceList(newList)
-    }
+    function addToChoiceList(newList) {
+        console.log(newList)
+        const lele = choiceList.push(newList)
+        setChoiceList(lele)
+      }
+      
+      function goToAnotherPage(event) {
 
+        let newList = [...selectedOptions]
+        console.log(newList)
 
+        if(newList.length === 0) {
+            event.preventDefault()
+            return
+        }
+        if (selectedOptions.length < 3) {
+          let missing = [];
+          for (let index = 0; index < 3 - selectedOptions.length; index++) {
+            missing.push("brak");
+          }
+        newList = [...selectedOptions, ...missing]
+        setSelectedOptions(newList)
+        }
+        addToChoiceList(newList);
+      }
+    
+    
     return (
+        
         <div className='bg'>
+            {checkSelected}
             <div className="centerdiv">
                 <h2>Dominujące Gatunki, wybierz maksymalnie trzy:</h2>
                 <form>
                     {treeTypes.map((element, index) => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio'  
                                 ref={inputRef}
                                 name={element}
-                                type="radio"
+                                type="checkbox"
                                 key={index}
                                 value={element} 
                                 checked={selectedOptions.includes(element)}
@@ -64,14 +97,18 @@ export default function DominantSpecies() {
                             </label>
                         </div>
                     ))}
-                    <Link onClick={addToChoiceList} to={{
+                    
+                </form>
+                <div className='forlink'>
+                <Link className='link' onClick={goToAnotherPage} to={{
                         pathname: '/percentages',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
-                <Button onClick={() => {setSelectedOptions([]);}}>Reset</Button>
+
+                </div>
+                
             </div>
         </div>
     )
