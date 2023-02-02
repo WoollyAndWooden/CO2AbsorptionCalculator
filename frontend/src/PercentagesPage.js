@@ -47,7 +47,7 @@ export default function PercentagesPage() {
         addToChoiceList(newList)
       }
   return (
-    <div className='bg'>
+    <body>
             <div className="centerdiv">
                 <h2>Wybierz procentowy udział wybranych gatunków dominujących</h2>
                 <Form className='next'>
@@ -81,6 +81,6 @@ export default function PercentagesPage() {
             </div>
             
             </div>
-        </div>
+        </body>
   )
 }

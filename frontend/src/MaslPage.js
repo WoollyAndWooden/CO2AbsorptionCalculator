@@ -57,7 +57,7 @@ export default function MaslPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Wysokość n.p.m:</h2>
                 <form>
@@ -91,6 +91,6 @@ export default function MaslPage() {
                 </div>
                 
             </div>
-        </div>
+        </body>
     )
 }

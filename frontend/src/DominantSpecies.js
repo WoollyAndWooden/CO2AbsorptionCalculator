@@ -75,7 +75,7 @@ export default function DominantSpecies() {
     
     return (
         
-        <div className='bg'>
+        <body>
             {checkSelected}
             <div className="centerdiv">
                 <h2>Dominujące Gatunki, wybierz maksymalnie trzy:</h2>
@@ -110,6 +110,6 @@ export default function DominantSpecies() {
                 </div>
                 
             </div>
-        </div>
+        </body>
     )
 }

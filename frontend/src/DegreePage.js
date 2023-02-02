@@ -40,7 +40,7 @@ export default function DegreePage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Stopień Naturalności:</h2>
                 <form>
@@ -72,6 +72,6 @@ export default function DegreePage() {
                     
                 </form>
             </div>
-        </div>
+        </body>
     )
 }

@@ -40,7 +40,7 @@ export default function HabitatPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Siedlisko:</h2>
                 <form>
@@ -71,6 +71,6 @@ export default function HabitatPage() {
                     </div>
                 </form>
             </div>
-        </div>
+        </body>
     )
 }
