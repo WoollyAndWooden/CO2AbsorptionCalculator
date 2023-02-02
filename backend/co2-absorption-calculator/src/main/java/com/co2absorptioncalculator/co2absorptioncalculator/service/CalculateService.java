@@ -4,10 +4,20 @@ import com.co2absorptioncalculator.co2absorptioncalculator.calculator.FactorCalc
 import com.co2absorptioncalculator.co2absorptioncalculator.calculator.exception.IncorrectDataException;
 import org.springframework.stereotype.Service;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 @Service
 public class CalculateService {
 
     private final static int DIVISOR = 10000;
+    private final static DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.US));
+
+    public CalculateService() {
+        DECIMAL_FORMAT.setRoundingMode(RoundingMode.HALF_UP);
+    }
 
     public Double calculateMature(
             String forest,
@@ -28,7 +38,9 @@ public class CalculateService {
             Double b = FactorCalculator.getLandValue(land);
             Double C = FactorCalculator.getLocationValue(location);
 
-            return (habitatValue * (degree * x  * a * b * C)) * area / DIVISOR;
+            Double result = (habitatValue * (degree * x  * a * b * C) * area) / DIVISOR;
+
+            return Double.parseDouble( DECIMAL_FORMAT.format(result));
 
         } catch (IncorrectDataException e) {
             throw new RuntimeException(e);
@@ -55,10 +67,10 @@ public class CalculateService {
             Double e = FactorCalculator.getTypeOfGroundValue(groundType);
             Double f = FactorCalculator.getDominantSpeciesValue(dominantSpecies);
             Double g = FactorCalculator.getNumberOfTreesValue(treeNumber);
-            Double p = 0d; // not known factor ?
             percentage = percentage/100;
 
-            return (AS * e * (f * percentage) *g * a * b * c * area) / 10000;
+            double result = (AS * e * (f * percentage) * g * a * b * c * area) / DIVISOR;
+            return Double.parseDouble( DECIMAL_FORMAT.format(result));
 
         } catch (IncorrectDataException e) {
             throw new RuntimeException(e);
@@ -89,11 +101,12 @@ public class CalculateService {
             Double f1 = FactorCalculator.getDominantSpeciesValue(dominantSpecies1);
             Double f2 = FactorCalculator.getDominantSpeciesValue(dominantSpecies2);
             Double g = FactorCalculator.getNumberOfTreesValue(treeNumber);
-            Double p = 0d; // not known factor ?
             percentage1 = percentage1/100;
             percentage2 = percentage2/100;
 
-            return (AS * e * (f1 * percentage1 + f2 * percentage2) *g * a * b * c * area) / 10000;
+            double result = (AS * e * (f1 * percentage1 + f2 * percentage2) * g * a * b * c * area) / 10000;
+            return Double.parseDouble( DECIMAL_FORMAT.format(result));
+
         } catch (IncorrectDataException e) {
             throw new RuntimeException(e);
         }
@@ -130,7 +143,8 @@ public class CalculateService {
             percentage2 = percentage2/100;
             percentage3 = percentage3/100;
 
-            return (AS * e * (f1 * percentage1 + f2 * percentage2 + f3 * percentage3) * g * a * b * c * area) / 10000;
+            double result = (AS * e * (f1 * percentage1 + f2 * percentage2 + f3 * percentage3) * g * a * b * c * area) / 10000;
+            return Double.parseDouble( DECIMAL_FORMAT.format(result));
 
         } catch (IncorrectDataException e) {
             throw new RuntimeException(e);

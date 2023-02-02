@@ -34,7 +34,7 @@ public class CalculateServiceTest {
                               String soil, String waterReservoir, String land, String location, Double expectedResult) throws IncorrectDataException {
 
             if(forestType.equals("mature")) {
-                Double calculation = calculateService.calculate(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
+                Double calculation = calculateService.calculateFirstOption(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
                 Assertions.assertEquals(expectedResult, calculation);
             }
         }

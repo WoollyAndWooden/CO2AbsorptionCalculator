@@ -81,7 +81,7 @@ public class FactorCalculator {
 
     public static Double getNumberOfTreesValue(String numberOfTrees) throws IncorrectDataException {
         return switch (numberOfTrees) {
-            case "800-1200" -> 0.8;
+            case "800 - 1200" -> 0.8;
             case "1200 - 1800" -> 1d;
             default -> throw new IncorrectDataException("Invalid data" + numberOfTrees);
         };
