@@ -120,7 +120,12 @@ body {
 }
 
 .forlink {
+    display: grid;
     padding-bottom: 30px;
+    justify-items: center;
+}
+.forlink a {
+    margin-top: 10px;
 }
 input[type]{
     margin-right: 10px;

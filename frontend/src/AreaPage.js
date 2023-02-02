@@ -45,13 +45,16 @@ export default function AreaPage() {
                         onInput={addChoice}>
                         </input>
                         <label className='label'>m2</label>
-                        <Link className='link' to={{
-                        pathname: '/averageAge',
-                        state: {
-                            state: choiceList
-                        }
-                    }}>Dalej</Link>
+
                     </form>
+                    <div className="forlink">
+                        <Link className='link' to={{
+                            pathname: '/averageAge',
+                            state: {
+                                state: choiceList
+                            }
+                        }}>Dalej</Link>
+                    </div>
                 </div>
             </div>
         )
