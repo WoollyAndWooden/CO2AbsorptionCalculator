@@ -9,7 +9,17 @@ public class FactorCalculator {
             case "Alder" -> 524d;
             case "Swamp-birch" -> 615d;
             case "Swamp-oak" -> 329d;
-            default -> throw new IncorrectDataException("Invalid data" + habitat    );
+            case "Ash-alder" -> 471d;
+            case "Mesic lime-oak-hornbeam" -> 366d;
+            case "Moist lime-oak-hornbeam" -> 403d;
+            case "Oak-pine" -> 299d;
+            case "Oak-spruce" -> 426d;
+            case "Thermophilous oak" -> 340d;
+            case "Mesic pine" -> 279d;
+            case "Moist pine" -> 319d;
+            case "Swamp pine" -> 379d;
+            case "Boreal spruce" -> 396d;
+            default -> throw new IncorrectDataException("Invalid data " + habitat    );
         };
     }
 
