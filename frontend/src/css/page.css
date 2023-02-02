@@ -43,6 +43,7 @@
 }
 
 .next {
+    margin-bottom: 50px;
 }
 
 .column {
@@ -54,13 +55,17 @@
     margin-left: 10px;
 }
 
-.bg {
+.youngend {
+    padding-top: 50px;
+}
+
+body {
     background-image: url("las.jpg");
-    height: 100vh;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
 .result {
     margin-top: 10px;
@@ -74,7 +79,24 @@
     padding: 10px;
     text-decoration: none;
     border-radius: 25px;
+    text-align: center;
 
+}
+
+.endlink {
+    float: left;
+    background-color: #1d1993;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+
+    
+}
+
+.cos {
+    float: right;
 }
 
 .forlink {

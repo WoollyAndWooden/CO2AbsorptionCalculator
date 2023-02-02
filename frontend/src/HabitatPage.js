@@ -68,9 +68,7 @@ export default function HabitatPage() {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-
                     </div>
-                   
                 </form>
             </div>
         </div>

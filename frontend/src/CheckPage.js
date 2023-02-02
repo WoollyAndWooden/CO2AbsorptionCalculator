@@ -117,24 +117,26 @@ export default function CheckPage() {
                                     <label  className='column contentValue'>{element.value}</label>
                             ))}
                         </Form>
-                    <div className="footer">
-                        <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
+                    
+                        <Link className='endlink' to={{
+                                pathname: '/',
+                            }}>Wróć do początku</Link>
 
+                        <Button className='cos' ref={buttonRef} onClick={callApi}>Oblicz</Button>
+`                       
                         <div className='result'>
                             <label>Wynik: &nbsp;</label>
                             <label>{result} t/ha</label>
                         </div>
+                    
 
-                        <Link className='link' to={{
-                                pathname: '/',
-                            }}>Wróć do początku</Link>
-                    </div>
+
                 </div>
             </div>
           )
     } else {
         return (
-            <div className='bg'>
+            <body>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content'>
@@ -161,20 +163,18 @@ export default function CheckPage() {
                                 }
                                 })}
                         </Form>
-                    <div className="footer">
-                        <Button ref={buttonRef} onClick={callApi}>Oblicz</Button>
+                        <Link className='endlink' to={{
+                                pathname: '/',
+                            }}>Wróć do początku</Link>
 
+                        <Button className='cos' ref={buttonRef} onClick={callApi}>Oblicz</Button>
+`                       
                         <div className='result'>
                             <label>Wynik: &nbsp;</label>
                             <label>{result} t/ha</label>
                         </div>
-
-                        <Link className='link' to={{
-                            pathname: '/',
-                        }}>Wróć do początku</Link>
-                    </div>
                 </div>
-            </div>
+            </body>
         )   
     }
     

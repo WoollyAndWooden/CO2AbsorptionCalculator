@@ -23,7 +23,7 @@ export default function MainPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
@@ -45,6 +45,6 @@ export default function MainPage() {
 
                 
             </div>
-        </div>
+        </body>
     )
 }
