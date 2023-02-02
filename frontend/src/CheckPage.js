@@ -101,7 +101,7 @@ export default function CheckPage() {
             <body>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
-                        <Form className='next content'>
+                        <Form className='next content mature'>
                                 <label className='column contentName'>Las</label>
                                 <label className='column contentName'>Pole powierzchni</label>
                                 <label className='column contentName'>Wiek</label>
@@ -137,7 +137,7 @@ export default function CheckPage() {
             <body className='checkBody'>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
-                        <Form className='next content'>
+                        <Form className='next content young'>
                                 <label className="contentName">Las</label>
                                 <label className="contentName">Pole powierzchni</label>
                                 <label className="contentName">Rodzaj podłoża</label>
