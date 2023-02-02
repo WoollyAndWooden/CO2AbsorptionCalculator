@@ -53,7 +53,7 @@ export default function SoilMoisturePage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Wilgotność gleby:</h2>
                 <form>
@@ -86,6 +86,6 @@ export default function SoilMoisturePage() {
                     
                 </form>
             </div>
-        </div>
+        </body>
     )
 }

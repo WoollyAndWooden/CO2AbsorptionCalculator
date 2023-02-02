@@ -26,7 +26,7 @@ export default function AverageAgePage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Średni wiek lasu:</h2>
                 <form>
@@ -59,6 +59,6 @@ export default function AverageAgePage() {
                 </div>
                 
             </div>
-        </div>
+        </body>
     )
 }

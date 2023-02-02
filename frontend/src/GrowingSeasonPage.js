@@ -40,7 +40,7 @@ export default function GrowingSeasonPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Lokacja</h2>
                 <form>
@@ -75,6 +75,6 @@ export default function GrowingSeasonPage() {
 
                 
             </div>
-        </div>
+        </body>
     )
 }

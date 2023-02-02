@@ -31,7 +31,7 @@ export default function AreaPage() {
 
     if(choiceList[0].tag === 'mature') {
         return (
-            <div className='bg'>
+            <body>
                 <div className="centerdiv">
                     <h2>Powierzchnia Lasu:</h2>
                     <form>
@@ -56,7 +56,7 @@ export default function AreaPage() {
                         }}>Dalej</Link>
                     </div>
                 </div>
-            </div>
+            </body>
         )
     } else {
         return (

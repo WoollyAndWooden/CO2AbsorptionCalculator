@@ -41,7 +41,7 @@ export default function WaterReservoirPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Zbiorniki wodne: </h2>
                 <form>
@@ -88,6 +88,6 @@ export default function WaterReservoirPage() {
 
                 
             </div>
-        </div>
+        </body>
     )
 }

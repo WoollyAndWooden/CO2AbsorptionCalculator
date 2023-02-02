@@ -20,7 +20,7 @@ export default function HowManyTreesPage() {
     }
 
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Ilość sadzonek na ha:</h2>
                 {console.log(choiceList)}
@@ -53,6 +53,6 @@ export default function HowManyTreesPage() {
                     }}>Dalej</Link>
                 </div>
             </div>
-        </div>
+        </body>
     )
 }

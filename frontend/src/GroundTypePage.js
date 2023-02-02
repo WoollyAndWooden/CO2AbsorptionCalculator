@@ -42,7 +42,7 @@ export default function GroundTypePage() {
         }
     }
     return (
-        <div className='bg'>
+        <body>
             <div className="centerdiv">
                 <h2>Rodzaj podłoża:</h2>
                 <form>
@@ -77,6 +77,6 @@ export default function GroundTypePage() {
 
                 
             </div>
-        </div>
+        </body>
     )
 }
