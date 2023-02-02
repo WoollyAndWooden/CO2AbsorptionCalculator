@@ -4,10 +4,12 @@ import { Link, useLocation } from 'react-router-dom'
 export default function SoilMoisturePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList[0] === 'mature') {
             if(choiceList.length === 6) {
                 choiceList.pop()
@@ -43,6 +45,13 @@ export default function SoilMoisturePage() {
         setChoiceList(newList)
     }
 
+
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
+
     return (
         <div className='bg'>
             <div className="centerdiv">
@@ -51,7 +60,8 @@ export default function SoilMoisturePage() {
                     {soilMoisture.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio' 
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -63,12 +73,17 @@ export default function SoilMoisturePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+
+                    <div className='forlink'>
+                    <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/reservoir',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
+
+                    </div>
+                    
                 </form>
             </div>
         </div>

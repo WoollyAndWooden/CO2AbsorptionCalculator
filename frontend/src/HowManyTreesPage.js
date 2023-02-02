@@ -29,6 +29,7 @@ export default function HowManyTreesPage() {
                         <div>
                             <label>
                                 <input
+                                className='radio' 
                                     ref={inputRef}
                                     name="radiobutton"
                                     type="radio"
@@ -40,13 +41,17 @@ export default function HowManyTreesPage() {
                             </label>
                         </div>
                     ))}
-                   <Link to={{
+                   
+                </form>
+
+                <div className='forlink'>
+                <Link className='link' to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+                </div>
             </div>
         </div>
     )

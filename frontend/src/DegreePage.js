@@ -6,10 +6,12 @@ import { Link, useLocation } from 'react-router-dom'
 export default function DegreePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList.length === 5) {
             choiceList.pop()
         }
@@ -31,6 +33,12 @@ export default function DegreePage() {
         setChoiceList(newList)
     }
 
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
+
     return (
         <div className='bg'>
             <div className="centerdiv">
@@ -39,7 +47,8 @@ export default function DegreePage() {
                     {degrees.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio'  
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -51,12 +60,16 @@ export default function DegreePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                    <div className='forlink'>
+                    <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
+
+                    </div>
+                    
                 </form>
             </div>
         </div>

@@ -71,13 +71,17 @@ export default function AreaPage() {
                         onInput={addChoice}>
                         </input>
                         <label>m2</label>
-                        <Link className='link' to={{
+                   
+                    </form>
+
+                    <div className='forlink'>
+                    <Link className='link' to={{
                         pathname: '/groundtype',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                    </form>
+                    </div>
                 </div>
             </div>
         )

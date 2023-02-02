@@ -6,15 +6,23 @@ import './css/page.css'
 export default function AverageAgePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList.length === 3) {
             choiceList.pop()
         }
         const newList = choiceList.concat({value: event.target.value})
         setChoiceList(newList)
+    }
+
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
     }
 
     return (
@@ -25,7 +33,8 @@ export default function AverageAgePage() {
                     {ageGroups.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio' 
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -37,13 +46,18 @@ export default function AverageAgePage() {
                             </label>
                         </div>
                     ))}
-                  <Link to={{
+                  
+                </form>
+                <div className='forlink'>
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/habitat',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+
+                </div>
+                
             </div>
         </div>
     )

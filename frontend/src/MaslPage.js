@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom'
 export default function MaslPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)    
+
     const inputRef = useRef()
     const landforms = ["Niziny", "Wyżyny", "Góry"]
     const descriptions = [
@@ -15,6 +17,7 @@ export default function MaslPage() {
 
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList[0].tag === 'mature') {
             if(choiceList.length === 8) {
                 choiceList.pop()
@@ -47,6 +50,12 @@ export default function MaslPage() {
         setDescription(descriptions[i])
     }
 
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
+
     return (
         <div className='bg'>
             <div className="centerdiv">
@@ -55,7 +64,8 @@ export default function MaslPage() {
                 {landforms.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio'  
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -68,13 +78,18 @@ export default function MaslPage() {
                         </div>
                     ))}
                     <div>{description}</div>
-                    <Link to={{
+                    
+                </form>
+                <div className='forlink'>
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/season',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+
+                </div>
+                
             </div>
         </div>
     )

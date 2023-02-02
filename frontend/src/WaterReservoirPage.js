@@ -4,9 +4,11 @@ import { Link, useLocation } from 'react-router-dom'
 export default function WaterReservoirPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)    
     const inputRef = useRef()
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList[0].tag === 'mature') {
             if(choiceList.length === 7) {
                 choiceList.pop()
@@ -32,6 +34,12 @@ export default function WaterReservoirPage() {
         setChoiceList(newList)
     }
 
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
+
     return (
         <div className='bg'>
             <div className="centerdiv">
@@ -39,7 +47,8 @@ export default function WaterReservoirPage() {
                 <form>
                     <div>
                         <label>
-                            <input 
+                            <input
+                            className='radio'  
                             ref={inputRef}
                             name="radiobutton"
                             type="radio"
@@ -52,7 +61,8 @@ export default function WaterReservoirPage() {
                     </div>
                     <div>
                         <label>
-                            <input 
+                            <input
+                            className='radio'  
                             ref={inputRef}
                             name="radiobutton"
                             type="radio"
@@ -63,13 +73,20 @@ export default function WaterReservoirPage() {
                             Brak
                         </label>
                     </div>
-                    <Link to={{
+                    
+                </form>
+
+                <div className='forlink'>
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/masl',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+
+                </div>
+
+                
             </div>
         </div>
     )

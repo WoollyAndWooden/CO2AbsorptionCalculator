@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 export default function GroundTypePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)  
     // const [selectedOptions, setSelectedOptions] = useState([]);
     const inputRef = useRef()
     const habitatTypes = ["po wyrębie", "porolna", "łąka"]
@@ -12,6 +13,7 @@ export default function GroundTypePage() {
     
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList.length === 3) {
             choiceList.pop()
         }
@@ -33,6 +35,12 @@ export default function GroundTypePage() {
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }
+
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            event.preventDefault()
+        }
+    }
     return (
         <div className='bg'>
             <div className="centerdiv">
@@ -41,7 +49,8 @@ export default function GroundTypePage() {
                     {habitatTypes.map(element => (
                         <div>
                             <label>
-                                <input 
+                                <input
+                                className='radio'  
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
@@ -53,13 +62,20 @@ export default function GroundTypePage() {
                             </label>
                         </div>
                     ))}
-                    <Link to={{
+                    
+                </form>
+
+                <div className='forlink'>
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/dominant',
                         state: {
                             state: choiceList
                         }
                     }}>Dalej</Link>
-                </form>
+
+                </div>
+
+                
             </div>
         </div>
     )
