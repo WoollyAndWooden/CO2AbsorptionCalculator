@@ -83,7 +83,7 @@ public class FactorCalculator {
             case "grab pospolity (Carpinus betulus)" -> 1.7;
             case "buk pospolity (Fagus sylvatica)" -> 1.6;
             case "lipa drobnolistna (Tilia cordata)", "klon pospolity (Acer platanoides)" -> 2d;
-            case "jesion wyniosły (Fraxinus excelsior)", "gatunki uzupełniające i krzewy " -> 1.8;
+            case "jesion wyniosły (Fraxinus excelsior)", "gatunki uzupełniające i krzewy" -> 1.8;
             case "klon jawor (Acer pseudoplatanus)", "klon polny (Acer campestre)" -> 1.9;
             default -> throw new IncorrectDataException("Invalid data" + dominantSpecies);
         };

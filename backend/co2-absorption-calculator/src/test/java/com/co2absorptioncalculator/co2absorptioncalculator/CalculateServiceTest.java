@@ -14,7 +14,7 @@ public class CalculateServiceTest {
     private CalculateService calculateService = new CalculateService();
     private static final Double DIVISOR = 10000d;
 
-    private static Stream<Arguments> arguments() {
+    private static Stream<Arguments> matureArguments() {
         return Stream.of(
                 Arguments.of(
                         "mature", 5000d, "30-50", "Alder", 1d, "swamp", "present", "lowlands", "woj. suwalskie",
@@ -24,17 +24,16 @@ public class CalculateServiceTest {
                         "mature", 10000d, "111-130", "Swamp-oak", 0.5, "dry", "absent", "mountains", "Pasmo wysokich Tatr i Sudetów",
                         10.3635
                 )
-
         );
     }
 
     @ParameterizedTest
-    @MethodSource("arguments")
-    public void testCalculate(String forestType, Double area, String age, String habitat, Double degreeOfNaturalness,
-                              String soil, String waterReservoir, String land, String location, Double expectedResult) throws IncorrectDataException {
+    @MethodSource("matureArguments")
+    public void testCalculateMature(String forestType, Double area, String age, String habitat, Double degreeOfNaturalness,
+                                    String soil, String waterReservoir, String land, String location, Double expectedResult) throws IncorrectDataException {
 
             if(forestType.equals("mature")) {
-                Double calculation = calculateService.calculateFirstOption(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
+                Double calculation = calculateService.calculateMature(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
                 Assertions.assertEquals(expectedResult, calculation);
             }
         }
