@@ -19,8 +19,6 @@ public class FactorCalculatorTest {
         );
     }
 
-
-
     private static Stream<Arguments> habitatValues() {
         return Stream.of(
                 Arguments.of(
@@ -31,6 +29,36 @@ public class FactorCalculatorTest {
                 ),
                 Arguments.of(
                         "Swamp-oak", 329d
+                ),
+                Arguments.of(
+                        "Ash-alder", 471d
+                ),
+                Arguments.of(
+                        "Mesic lime-oak-hornbeam", 366d
+                ),
+                Arguments.of(
+                        "Moist lime-oak-hornbeam", 403d
+                ),
+                Arguments.of(
+                        "Oak-pine", 299d
+                ),
+                Arguments.of(
+                        "Oak-spruce", 426d
+                ),
+                Arguments.of(
+                        "Thermophilous oak", 340d
+                ),
+                Arguments.of(
+                        "Mesic pine", 279d
+                ),
+                Arguments.of(
+                        "Moist pine", 319d
+                ),
+                Arguments.of(
+                        "Swamp pine", 379d
+                ),
+                Arguments.of(
+                        "Boreal spruce", 396d
                 )
         );
     }
@@ -154,6 +182,63 @@ public class FactorCalculatorTest {
         );
     }
 
+    private static Stream<Arguments> typeOfGroundValues() {
+        return Stream.of(
+                Arguments.of(
+                        "after felling", 1d
+                ),
+                Arguments.of(
+                        "post-agricultural", 0.2
+                ),
+                Arguments.of(
+                        "meadow", 0.8
+                )
+        );
+    }
+
+    private static Stream<Arguments> dominantSpeciesValue() {
+        return Stream.of(
+                Arguments.of(
+                        "dąb szypułkowy i bezszypułkowy (Quercus robus Q. petraea)", 1.5
+                ),
+                Arguments.of(
+                        "grab pospolity (Carpinus betulus)", 1.7
+                ),
+                Arguments.of(
+                        "buk pospolity (Fagus sylvatica)", 1.6
+                ),
+                Arguments.of(
+                        "lipa drobnolistna (Tilia cordata)", 2d
+                ),
+                Arguments.of(
+                        "klon pospolity (Acer platanoides)", 2d
+                ),
+                Arguments.of(
+                        "jesion wyniosły (Fraxinus excelsior)", 1.8
+                ),
+                Arguments.of(
+                        "gatunki uzupełniające i krzewy", 1.8
+                ),
+                Arguments.of(
+                        "klon jawor (Acer pseudoplatanus)", 1.9
+                ),
+                Arguments.of(
+                        "klon polny (Acer campestre)", 1.9
+                )
+        );
+    }
+
+    private static Stream<Arguments> numberOfTreesValues() {
+        return Stream.of(
+                Arguments.of(
+                        "800 - 1200", 0.8
+                ),
+                Arguments.of(
+                        "1200 - 1800", 1d
+                )
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("habitatValues")
     public void testHabitatValue(String habitat, Double expectedValue) throws IncorrectDataException {
@@ -254,6 +339,70 @@ public class FactorCalculatorTest {
 
     @Test
     public void testNullLocationValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
+    @MethodSource("typeOfGroundValues")
+    public void testTypeOfGround(String typeOfGround, Double expectedValue) throws IncorrectDataException {
+        Assertions.assertEquals(expectedValue, FactorCalculator.getTypeOfGroundValue(typeOfGround));
+    }
+
+    @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectTypeOfGroundValue(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullTypeOfGroundValue() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("typeOfGroundValues")
+    public void testDominantSpeciesValues(String dominantSpecies, Double expectedValue) throws IncorrectDataException {
+        Assertions.assertEquals(expectedValue, FactorCalculator.getTypeOfGroundValue(dominantSpecies));
+    }
+
+    @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectDominantSpecies(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullDominantSpecies() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            FactorCalculator.getHabitatValue(null);
+        });
+    }
+
+    @ParameterizedTest
+    @MethodSource("typeOfGroundValues")
+    public void testNumberOfTrees(String numberOfTrees, Double expectedValue) throws IncorrectDataException {
+        Assertions.assertEquals(expectedValue, FactorCalculator.getTypeOfGroundValue(numberOfTrees));
+    }
+
+    @ParameterizedTest
+    @MethodSource("incorrectValues")
+    public void testIncorrectNumberOfTrees(String arg) throws IncorrectDataException {
+        Assertions.assertThrows(IncorrectDataException.class, () -> {
+            FactorCalculator.getHabitatValue(arg);
+        });
+    }
+
+    @Test
+    public void testNullNumberOfTrees() {
         Assertions.assertThrows(NullPointerException.class, () -> {
             FactorCalculator.getHabitatValue(null);
         });

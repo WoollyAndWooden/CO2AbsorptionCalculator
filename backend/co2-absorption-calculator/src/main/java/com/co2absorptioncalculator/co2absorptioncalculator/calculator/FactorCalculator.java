@@ -9,7 +9,17 @@ public class FactorCalculator {
             case "Alder" -> 524d;
             case "Swamp-birch" -> 615d;
             case "Swamp-oak" -> 329d;
-            default -> throw new IncorrectDataException("Invalid data" + habitat    );
+            case "Ash-alder" -> 471d;
+            case "Mesic lime-oak-hornbeam" -> 366d;
+            case "Moist lime-oak-hornbeam" -> 403d;
+            case "Oak-pine" -> 299d;
+            case "Oak-spruce" -> 426d;
+            case "Thermophilous oak" -> 340d;
+            case "Mesic pine" -> 279d;
+            case "Moist pine" -> 319d;
+            case "Swamp pine" -> 379d;
+            case "Boreal spruce" -> 396d;
+            default -> throw new IncorrectDataException("Invalid data " + habitat    );
         };
     }
 
@@ -57,4 +67,35 @@ public class FactorCalculator {
             default -> throw new IncorrectDataException("Invalid data" + location);
         };
     }
+
+    public static Double getTypeOfGroundValue(String typeOfGround) throws IncorrectDataException {
+        return switch (typeOfGround) {
+            case "after felling" -> 1d;
+            case "post-agricultural" -> 0.2;
+            case "meadow" -> 0.8;
+            default -> throw new IncorrectDataException("Invalid data" + typeOfGround);
+        };
+    }
+
+    public static Double getDominantSpeciesValue(String dominantSpecies) throws IncorrectDataException {
+        return switch (dominantSpecies) {
+            case "dąb szypułkowy i bezszypułkowy (Quercus robus Q. petraea)" -> 1.5;
+            case "grab pospolity (Carpinus betulus)" -> 1.7;
+            case "buk pospolity (Fagus sylvatica)" -> 1.6;
+            case "lipa drobnolistna (Tilia cordata)", "klon pospolity (Acer platanoides)" -> 2d;
+            case "jesion wyniosły (Fraxinus excelsior)", "gatunki uzupełniające i krzewy" -> 1.8;
+            case "klon jawor (Acer pseudoplatanus)", "klon polny (Acer campestre)" -> 1.9;
+            default -> throw new IncorrectDataException("Invalid data" + dominantSpecies);
+        };
+    }
+
+    public static Double getNumberOfTreesValue(String numberOfTrees) throws IncorrectDataException {
+        return switch (numberOfTrees) {
+            case "800 - 1200" -> 0.8;
+            case "1200 - 1800" -> 1d;
+            default -> throw new IncorrectDataException("Invalid data" + numberOfTrees);
+        };
+    }
+
+
 }
