@@ -111,7 +111,7 @@ export default function CheckPage() {
                                 <label className='column contentName'>Stopień</label>
                                 <label className='column contentName'>Gleba</label>
                                 <label className='column contentName'>Rezerwy Wody</label>
-                                <label className='column contentName'>Ukształtowanie terenu</label>
+                                <label className='column contentName'>Wysokość n.p.m</label>
                                 <label className='column contentName'>Lokacja</label>
                             {choiceList.map(element => (
                                     <label className='columnContentValue'>{element.value}</label>
@@ -136,7 +136,7 @@ export default function CheckPage() {
           )
     } else {
         return (
-            <body>
+            <body className='checkBody'>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content'>
@@ -149,7 +149,7 @@ export default function CheckPage() {
                                 <label className="contentName">Liczba drzew</label>
                                 <label className="contentName">Gleba</label>
                                 <label className="contentName">Rezerwy Wody</label>
-                                <label className="contentName">Ukształtowanie terenu</label>
+                                <label className="contentName">Wysokość n.p.m</label>
                                 <label className="contentName">Lokacja</label>
                             {choiceList.map((element, index) => {
                                 if (index === 3) {

@@ -8,7 +8,7 @@ export default function DegreePage() {
     const [choiceList, setChoiceList] = useState(location.state.state)
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
-    const degrees = ["naturalne", "o znamionach siedlisk naturalnych", "półnaturalne"]
+    const degrees = ["Naturalne", "O znamionach siedlisk naturalnych", "Półnaturalne"]
 
     function handleChange(event){
         setSelected(true)
@@ -18,14 +18,14 @@ export default function DegreePage() {
         const value = event.target.value
         var choice;
         switch(value){
-            case 'naturalne':
-                choice = {percentage: 1, value: 'naturalne'}
+            case 'Naturalne':
+                choice = {percentage: 1, value: 'Naturalne'}
                 break
-            case 'o znamionach siedlisk naturalnych':
-                choice = {percentage: 0.8, value: 'o znamionach siedlisk naturalnych'}
+            case 'O znamionach siedlisk naturalnych':
+                choice = {percentage: 0.8, value: 'O znamionach siedlisk naturalnych'}
                 break
-            case "półnaturalne":
-                choice = {percentage: 0.5, value: 'półnaturalne'}
+            case "Półnaturalne":
+                choice = {percentage: 0.5, value: 'Półnaturalne'}
                 break
         }
 
@@ -46,7 +46,7 @@ export default function DegreePage() {
                 <form>
                     {degrees.map(element => (
                         <div>
-                            <label>
+                            <label className='contentValue  '>
                                 <input
                                 className='radio'  
                                 ref={inputRef}
