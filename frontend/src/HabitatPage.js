@@ -35,6 +35,7 @@ export default function HabitatPage() {
 
     function goToAnotherPage(event) {
         if(!isSelected) {
+            alert("Nie wybrałeś żadnej opcji!")
             event.preventDefault()
         }
     }

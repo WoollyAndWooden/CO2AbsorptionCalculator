@@ -38,6 +38,7 @@ export default function GroundTypePage() {
 
     function goToAnotherPage(event) {
         if(!isSelected) {
+            alert("Nie wybrałeś żadnej opcji!")
             event.preventDefault()
         }
     }
