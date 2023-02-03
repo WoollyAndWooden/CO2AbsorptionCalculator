@@ -5,11 +5,13 @@ import { Link, useLocation } from 'react-router-dom'
 export default function HowManyTreesPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
+    const [isSelected, setSelected] = useState(false)    
     const inputRef = useRef()
     const habitatTypes = ["800 - 1200", "1200 - 1800"]
     
 
     function handleChange(event){
+        setSelected(true)
         if(choiceList.length === 6) {
             choiceList.pop()
         }
@@ -17,6 +19,13 @@ export default function HowManyTreesPage() {
 
         const newList = choiceList.concat({value:event.target.value})
         setChoiceList(newList)
+    }
+
+    function goToAnotherPage(event) {
+        if(!isSelected) {
+            alert("Nie została wybrana żadna opcja!")
+            event.preventDefault()
+        }
     }
 
     return (
@@ -45,7 +54,7 @@ export default function HowManyTreesPage() {
                 </form>
 
                 <div className='forlink'>
-                <Link className='link' to={{
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList

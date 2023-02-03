@@ -48,6 +48,7 @@ export default function SoilMoisturePage() {
 
     function goToAnotherPage(event) {
         if(!isSelected) {
+            alert("Nie została wybrana żadna opcja!")
             event.preventDefault()
         }
     }
