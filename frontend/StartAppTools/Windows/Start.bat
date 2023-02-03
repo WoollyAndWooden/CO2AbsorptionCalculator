@@ -1,2 +1,2 @@
-cd ../..
-npm start
+cd .\frontend
+start npm start
