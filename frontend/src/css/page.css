@@ -26,10 +26,10 @@
     grid-auto-flow: column;
 }
 .mature {
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(9, auto);
 }
 .young {
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(10, auto);
 }
 .contentName {
     grid-column: 1 / span 1;
