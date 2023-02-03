@@ -54,7 +54,7 @@ export default function HowManyTreesPage() {
                 </form>
 
                 <div className='forlink'>
-                <Link className='link' to={{
+                <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/soil',
                         state: {
                             state: choiceList
