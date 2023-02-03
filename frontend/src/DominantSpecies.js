@@ -58,7 +58,7 @@ export default function DominantSpecies() {
         console.log(newList)
 
         if(newList.length === 0) {
-            alert("Nie wybrałeś żadnej opcji!")
+            alert("Nie została wybrana żadna opcja!")
             event.preventDefault()
             return
         }

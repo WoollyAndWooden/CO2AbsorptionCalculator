@@ -36,7 +36,7 @@ export default function WaterReservoirPage() {
 
     function goToAnotherPage(event) {
         if(!isSelected) {
-            alert("Nie wybrałeś żadnej opcji!")
+            alert("Nie została wybrana żadna opcja!")
             event.preventDefault()
         }
     }
