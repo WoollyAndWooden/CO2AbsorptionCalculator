@@ -26,18 +26,13 @@ export default function PercentagesPage() {
       }
 
 
-      function checkCorrectValues(event) {
-        console.log(selectedOptions)
-        console.log(choiceList)
-        
+      function checkCorrectValues(event) {    
         var sum = 0
         for (let index = 0; index < selectedOptions.length; index++) {
           sum = sum + selectedOptions[index]
         }
-        console.log(sum)
 
         if (sum < 60 || sum >= 100) {
-          console.log("sumkipumki")
           alert("Suma procentowa nie może być mniejsza niz 60% oraz większa od 100%!")
           event.preventDefault()
           return

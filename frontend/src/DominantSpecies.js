@@ -47,7 +47,6 @@ export default function DominantSpecies() {
     }
     
     function addToChoiceList(newList) {
-        console.log(newList)
         const lele = choiceList.push(newList)
         setChoiceList(lele)
       }
@@ -55,7 +54,6 @@ export default function DominantSpecies() {
       function goToAnotherPage(event) {
 
         let newList = [...selectedOptions]
-        console.log(newList)
 
         if(newList.length === 0) {
             alert("Nie została wybrana żadna opcja!")

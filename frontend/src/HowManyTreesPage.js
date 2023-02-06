@@ -32,7 +32,6 @@ export default function HowManyTreesPage() {
         <body>
             <div className="centerdiv">
                 <h2>Ilość sadzonek na ha:</h2>
-                {console.log(choiceList)}
                 <form>
                     {habitatTypes.map(element => (
                         <div>
