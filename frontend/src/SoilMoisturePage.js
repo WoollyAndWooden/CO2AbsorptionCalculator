@@ -75,12 +75,23 @@ export default function SoilMoisturePage() {
                     ))}
 
                     <div className='forlink'>
-                    <Link className='endlink' to={{
+                    {choiceList[0].tag ==='mature' ? (
+                        <Link className='endlink' to={{
                             pathname: '/degree',
                             state: {
                                 state: choiceList.slice(0, -2)
                             }
-                        }}>Wróć</Link>
+                        }}>Wróć</Link> 
+
+                    ) : (
+                        <Link className='endlink' to={{
+                            pathname: '/howmanytrees',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link> 
+                    )}
+                    
                     <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/reservoir',
                         state: {

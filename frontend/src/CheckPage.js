@@ -15,7 +15,6 @@ export default function CheckPage() {
     const buttonRef = useRef(null);
 
     function callApi() {
-
         if(choiceList[0].tag === 'mature') {
             axios.get('http://localhost:8080/calculateMature', {
                 params: {
@@ -132,15 +131,12 @@ export default function CheckPage() {
                             <label>Wynik: &nbsp;</label>
                             <label>{result} t/ha</label>
                         </div>
-                    
-
-
                 </div>
             </body>
           )
     } else {
         return (
-            <body className='checkBody'>
+            <body>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content young'>
