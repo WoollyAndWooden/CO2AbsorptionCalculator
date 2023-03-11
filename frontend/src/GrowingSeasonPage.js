@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function GrowingSeasonPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)    
 
     const inputRef = useRef()
@@ -65,6 +65,12 @@ export default function GrowingSeasonPage() {
                 </form>
 
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/masl',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/check',
                         state: {

@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function HabitatPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const habitatTypes = [
@@ -63,6 +63,12 @@ export default function HabitatPage() {
                     ))}
 
                     <div className='forlink'>
+                    <Link className='endlink' to={{
+                            pathname: '/averageAge',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                     <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/degree',
                         state: {

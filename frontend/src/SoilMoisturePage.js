@@ -3,14 +3,14 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function SoilMoisturePage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
 
     function handleChange(event){
         setSelected(true)
-        if(choiceList[0] === 'mature') {
+        if(choiceList[0].tag === 'mature') {
             if(choiceList.length === 6) {
                 choiceList.pop()
             }
@@ -18,7 +18,6 @@ export default function SoilMoisturePage() {
             if(choiceList.length === 7) {
                 choiceList.pop()
             }
-
         }
         
         const value = event.target.value
@@ -76,6 +75,12 @@ export default function SoilMoisturePage() {
                     ))}
 
                     <div className='forlink'>
+                    <Link className='endlink' to={{
+                            pathname: '/degree',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                     <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/reservoir',
                         state: {

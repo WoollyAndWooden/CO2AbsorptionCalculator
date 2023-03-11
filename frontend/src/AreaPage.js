@@ -4,14 +4,13 @@ import './css/page.css'
 
 export default function AreaPage() {
     const location = useLocation()
-    const history = useHistory()
     const [value, setValue] = useState(0)
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     
     const inputRef = useRef()
 
     function addChoice() {
-        if(choiceList.length === 2) {
+        if(choiceList.length >= 2) {
             choiceList.pop()
         }
         if(choiceList.length === 1)  {

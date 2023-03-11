@@ -5,7 +5,7 @@ import './css/page.css'
 
 export default function AverageAgePage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
@@ -50,6 +50,12 @@ export default function AverageAgePage() {
                   
                 </form>
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/area',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/habitat',
                         state: {

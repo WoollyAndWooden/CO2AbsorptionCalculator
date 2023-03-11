@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function WaterReservoirPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)    
     const inputRef = useRef()
 
@@ -78,6 +78,12 @@ export default function WaterReservoirPage() {
                 </form>
 
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/soil',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/masl',
                         state: {
