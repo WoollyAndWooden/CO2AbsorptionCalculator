@@ -22,7 +22,7 @@ public class CalculateServiceTest {
                 ),
                 Arguments.of(
                         "mature", 10000d, "111-130", "Swamp-oak", 0.5, "dry", "absent", "mountains", "Pasmo wysokich Tatr i Sudetów",
-                        10.3635
+                        20.73
                 )
         );
     }
@@ -33,7 +33,7 @@ public class CalculateServiceTest {
                                     String soil, String waterReservoir, String land, String location, Double expectedResult) throws IncorrectDataException {
 
             if(forestType.equals("mature")) {
-                Double calculation = calculateService.calculateMature(forestType, area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
+                Double calculation = calculateService.calculateMature(area, age, habitat, degreeOfNaturalness, soil, waterReservoir, land, location);
                 Assertions.assertEquals(expectedResult, calculation);
             }
         }
