@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function HowManyTreesPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)    
     const inputRef = useRef()
     const habitatTypes = ["800 - 1200", "1200 - 1800"]
@@ -53,10 +53,16 @@ export default function HowManyTreesPage() {
                 </form>
 
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/percentages',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/soil',
                         state: {
-                            state: choiceList
+                            state: choiceList,
                         }
                     }}>Dalej</Link>
                 </div>

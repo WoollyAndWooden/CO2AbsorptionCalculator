@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function GroundTypePage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)  
     // const [selectedOptions, setSelectedOptions] = useState([]);
     const inputRef = useRef()
@@ -67,6 +67,12 @@ export default function GroundTypePage() {
                 </form>
 
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/area',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/dominant',
                         state: {

@@ -2,19 +2,21 @@ import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './css/page.css'
 
-
 export default function AreaPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state.concat({value: 0}))
     const [value, setValue] = useState(0)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
+    
     const inputRef = useRef()
 
     function addChoice() {
-        if(choiceList.length === 2) {
+        if(choiceList.length >= 2) {
             choiceList.pop()
         }
-        const newList = choiceList.concat({value: handleDecimalPlace(inputRef.current.value)})
-        setChoiceList(newList)
+        if(choiceList.length === 1)  {
+            const newList = choiceList.concat({value: handleDecimalPlace(inputRef.current.value)})
+            setChoiceList(newList)
+        }
     }
 
     function handleDecimalPlace(value) {
@@ -41,13 +43,19 @@ export default function AreaPage() {
                         type="number"
                         step="0.01"
                         value={value}
-                        onChange={(event) => checkValue(event, 'change')}
+                        onChange={(event) => checkValue(event)}
                         onInput={addChoice}>
                         </input>
                         <label className='label'>m2</label>
-
                     </form>
+
                     <div className="forlink">
+                        <Link className='endlink' to={{
+                            pathname: '/',
+                            state: {
+                                state: choiceList.slice(0, -1)
+                            }
+                        }}>Wróć</Link>
                         <Link className='link' to={{
                             pathname: '/averageAge',
                             state: {

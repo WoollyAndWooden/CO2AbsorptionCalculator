@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function MaslPage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)    
 
     const inputRef = useRef()
@@ -82,6 +82,12 @@ export default function MaslPage() {
                     
                 </form>
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/reservoir',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/season',
                         state: {

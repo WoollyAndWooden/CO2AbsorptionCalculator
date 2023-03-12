@@ -32,18 +32,19 @@ export default function MainPage() {
                         <option value="young" ref={inputRef}>Młode lasy </option>
                     </select>
                     <label className='label'>wiek lasu</label>
-                  
                 </form>
-                <div className='forlink'>
-                <Link className='link' to={{
-                        pathname: '/area',
-                        state: {
-                            state: choiceList
-                        }
-                    }}>Dalej</Link>
-                </div>
-
                 
+                <div className='forlink'>
+                    <Link className='link' to={{
+                            pathname: '/area',
+                            state: {
+                                state: choiceList
+                            }
+                        }}>Dalej</Link>
+                </div>
+                
+
+        
             </div>
         </body>
     )

@@ -104,7 +104,6 @@ body {
     text-decoration: none;
     border-radius: 25px;
     text-align: center;
-
 }
 
 .endlink {
@@ -124,13 +123,13 @@ body {
 }
 
 .forlink {
-    display: grid;
     padding-bottom: 30px;
     justify-items: center;
+    margin-top: 15px;
 }
-.forlink a {
-    margin-top: 10px;
-}
+
+
+
 input[type]{
     margin-right: 10px;
 }

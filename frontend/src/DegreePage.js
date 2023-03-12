@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function DegreePage() {
     const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state)
+    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const degrees = ["Naturalne", "O znamionach siedlisk naturalnych", "Półnaturalne"]
@@ -62,6 +62,12 @@ export default function DegreePage() {
                         </div>
                     ))}
                     <div className='forlink'>
+                    <Link className='endlink' to={{
+                            pathname: '/habitat',
+                            state: {
+                                state: choiceList.slice(0, -2)
+                            }
+                        }}>Wróć</Link>
                     <Link onClick={goToAnotherPage} className='link' to={{
                         pathname: '/soil',
                         state: {

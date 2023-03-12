@@ -15,7 +15,6 @@ export default function CheckPage() {
     const buttonRef = useRef(null);
 
     function callApi() {
-
         if(choiceList[0].tag === 'mature') {
             axios.get('http://localhost:8080/calculateMature', {
                 params: {
@@ -115,6 +114,12 @@ export default function CheckPage() {
                                     <label className='columnContentValue'>{element.value}</label>
                             ))}
                         </Form>
+                        <Link className='endlink' to={{
+                            pathname: '/season',
+                            state: {
+                                state: choiceList.slice(0, -1)
+                            }
+                        }}>Wróć</Link>
                     
                         <Link className='endlink' to={{
                                 pathname: '/',
@@ -126,15 +131,12 @@ export default function CheckPage() {
                             <label>Wynik: &nbsp;</label>
                             <label>{result} t/ha</label>
                         </div>
-                    
-
-
                 </div>
             </body>
           )
     } else {
         return (
-            <body className='checkBody'>
+            <body>
                 <div className="centerdiv checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content young'>
@@ -163,6 +165,12 @@ export default function CheckPage() {
                                 }
                                 })}
                         </Form>
+                        <Link className='endlink' to={{
+                            pathname: '/season',
+                            state: {
+                                state: choiceList.slice(0, -1)
+                            }
+                        }}>Wróć</Link>
                         <Link className='endlink' to={{
                                 pathname: '/',
                             }}>Wróć do początku</Link>

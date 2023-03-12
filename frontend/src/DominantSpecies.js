@@ -73,7 +73,6 @@ export default function DominantSpecies() {
     
     
     return (
-        
         <body>
             {checkSelected}
             <div className="centerdiv">
@@ -99,10 +98,16 @@ export default function DominantSpecies() {
                     
                 </form>
                 <div className='forlink'>
+                <Link className='endlink' to={{
+                            pathname: '/groundtype',
+                            state: {
+                                state: choiceList
+                            }
+                        }}>Wróć</Link>
                 <Link className='link' onClick={goToAnotherPage} to={{
                         pathname: '/percentages',
                         state: {
-                            state: choiceList
+                            state: choiceList,
                         }
                     }}>Dalej</Link>
 

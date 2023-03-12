@@ -58,18 +58,23 @@ export default function PercentagesPage() {
                               onInput={event => handleInputs(event, index)}
                               ref={inputRef}
                               />
-  
                       </div>             
-                  )
+                    )
                   }
                 } )}
                 </div>
             </Form>
             <div className='forlink'>
+            <Link className='endlink' to={{
+                            pathname: '/dominant',
+                            state: {
+                                state: choiceList.slice(0, -1)
+                            }
+                        }}>Wróć</Link>
             <Link onClick={checkCorrectValues} className='link'  to={{
                         pathname: '/howmanytrees',
                         state: {
-                            state: choiceList
+                            state: choiceList,
                         }
                     }}>Dalej</Link>
 
