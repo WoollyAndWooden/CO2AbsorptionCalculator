@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -18,7 +18,6 @@ export default function CheckPage() {
         if(choiceList[0].tag === 'mature') {
             axios.get('http://localhost:8080/calculateMature', {
                 params: {
-                    forest: choiceList[0].tag,
                     area: choiceList[1].value,
                     age: choiceList[2].value,
                     habitat: choiceList[3].value,
@@ -33,67 +32,23 @@ export default function CheckPage() {
             .catch(error => console.log(error))
 
         } else {
-            if(choiceList[3].filter(element => element === 'brak').length === 2) {
-                axios.get('http://localhost:8080/calculateYoungFirst', {
-                    params: {
-                        forest: choiceList[0].tag,
-                        area: choiceList[1].value,
-                        groundType: choiceList[2].tag,
-                        dominantSpecies: choiceList[3][0],
-                        percentage: choiceList[4][0],
-                        treeNumber: choiceList[5].value,
-                        soil: choiceList[6].tag,
-                        reservoir: choiceList[7].tag,
-                        land: choiceList[8].tag,
-                        location: choiceList[9].value,
-                    }
-                })
-                .then(result => setResult(result.data))
-                .catch(error => console.log(error))
-
-            } else if(choiceList[3].filter(element => element === 'brak').length === 1) {
-                axios.get('http://localhost:8080/calculateYoungSecond', {
-                    params: {
-                        forest: choiceList[0].tag,
-                        area: choiceList[1].value,
-                        groundType: choiceList[2].tag,
-                        dominantSpecies1: choiceList[3][0],
-                        dominantSpecies2: choiceList[3][1],
-                        percentage1: choiceList[4][0],
-                        percentage2: choiceList[4][1],
-                        treeNumber: choiceList[5].value,
-                        soil: choiceList[6].tag,
-                        reservoir: choiceList[7].tag,
-                        land: choiceList[8].tag,
-                        location: choiceList[9].value,
-                    }
-                })
-                .then(result => setResult(result.data))
-                .catch(error => console.log(error))
-            } else {
-                axios.get('http://localhost:8080/calculateYoungThird', {
-                    params: {
-                        forest: choiceList[0].tag,
-                        area: choiceList[1].value,
-                        groundType: choiceList[2].tag,
-                        dominantSpecies1: choiceList[3][0],
-                        dominantSpecies2: choiceList[3][1],
-                        dominantSpecies3: choiceList[3][2],
-                        percentage1: choiceList[4][0],
-                        percentage2: choiceList[4][1],
-                        percentage3: choiceList[4][2],
-                        treeNumber: choiceList[5].value,
-                        soil: choiceList[6].tag,
-                        reservoir: choiceList[7].tag,
-                        land: choiceList[8].tag,
-                        location: choiceList[9].value,
-                    }
-                })
-                .then(result => setResult(result.data))
-                .catch(error => console.log(error))
+            axios.get('http://localhost:8080/calculateYoung', {
+            params: {
+                area: choiceList[1].value,
+                groundType: choiceList[2].tag,
+                dominantSpecies: choiceList[3].join(','),
+                percentage: choiceList[4].join(','),
+                treeNumber: choiceList[5].value,
+                soil: choiceList[6].tag,
+                reservoir: choiceList[7].tag,
+                land: choiceList[8].tag,
+                location: choiceList[9].value,
             }
-        }
+        })
+        .then(result => setResult(result.data))
+        .catch(error => console.log(error))
     }
+}
 
     if(choiceList[0].tag === 'mature') {
         return (
@@ -185,6 +140,4 @@ export default function CheckPage() {
             </body>
         )   
     }
-    
-  
 }
