@@ -96,6 +96,4 @@ public class FactorCalculator {
             default -> throw new IncorrectDataException("Invalid data" + numberOfTrees);
         };
     }
-
-
 }
