@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './css/page.css'
 
 export default function AreaPage() {

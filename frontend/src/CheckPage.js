@@ -166,6 +166,12 @@ export default function CheckPage() {
                                 })}
                         </Form>
                         <Link className='endlink' to={{
+                            pathname: '/season',
+                            state: {
+                                state: choiceList.slice(0, -1)
+                            }
+                        }}>Wróć</Link>
+                        <Link className='endlink' to={{
                                 pathname: '/',
                             }}>Wróć do początku</Link>
 
