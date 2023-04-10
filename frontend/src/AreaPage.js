@@ -34,7 +34,7 @@ export default function AreaPage() {
     if(choiceList[0].tag === 'mature') {
         return (
             <body>
-                <div className="centerdiv">
+                <div className="centerdiv fade-in fade-in">
                     <h2>Powierzchnia Lasu:</h2>
                     <form>
                         <input
@@ -69,7 +69,7 @@ export default function AreaPage() {
     } else {
         return (
             <div className='bg'>
-                <div className="centerdiv">
+                <div className="centerdiv fade-in fade-in fade-in">
                     <h2>Powierzchnia Lasu...:</h2>
                     <form>
                         <input

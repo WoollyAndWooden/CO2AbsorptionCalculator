@@ -54,7 +54,7 @@ export default function SoilMoisturePage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Wilgotność gleby:</h2>
                 <form>
                     {soilMoisture.map(element => (

@@ -43,7 +43,7 @@ export default function WaterReservoirPage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Zbiorniki wodne: </h2>
                 <form>
                     <div>

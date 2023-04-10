@@ -12,7 +12,44 @@ export default function CheckPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)
     const [result, setResult] = useState(0)
+    const [popupIndex, setPopupIndex] = useState(null);
+
     const buttonRef = useRef(null);
+    const buttons = [];
+
+    for (let i = 0; i < 9; i++) {
+      buttons.push(<button type='button' className='somebutton' key={i} onClick={() => handleButtonClick(i)}>Edytuj</button>);
+    }
+
+
+    function Popup({index}) {
+        if(index === 1) {
+            
+        }
+        console.log(choiceList)
+        return (
+          <div className="popup">
+            <h1>{choiceList[index].value}</h1>
+            {index === 1 ? (
+                <input type='number'></input>
+                        
+                    ) : (
+                        <input type='text'></input>
+                    )}
+
+            <button onClick={handleClosePopup}>Close Popup</button>
+          </div>
+        );
+      }
+      
+
+    function handleButtonClick(index) {
+        setPopupIndex(index);
+    }
+
+    function handleClosePopup() {
+        setPopupIndex(null);
+    }
 
     function callApi() {
         if(choiceList[0].tag === 'mature') {
@@ -53,7 +90,7 @@ export default function CheckPage() {
     if(choiceList[0].tag === 'mature') {
         return (
             <body>
-                <div className="centerdiv checkCenter">
+                <div className="centerdiv fade-in checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content mature'>
                                 <label className='column contentName'>Las</label>
@@ -65,9 +102,15 @@ export default function CheckPage() {
                                 <label className='column contentName'>Rezerwy Wody</label>
                                 <label className='column contentName'>Wysokość n.p.m</label>
                                 <label className='column contentName'>Lokacja</label>
-                            {choiceList.map(element => (
-                                    <label className='columnContentValue'>{element.value}</label>
+                            {choiceList.map((element) => (
+                                <label className='columnContentValue'>{element.value}</label>
                             ))}
+                           {buttons.map((button, index) => (
+                                <div key={index}>
+                                    {button}
+                                    {popupIndex !== null && <Popup index={popupIndex} onClose={handleClosePopup} />}
+                                </div>
+                                ))}
                         </Form>
                         <Link className='endlink' to={{
                             pathname: '/season',
@@ -92,7 +135,7 @@ export default function CheckPage() {
     } else {
         return (
             <body>
-                <div className="centerdiv checkCenter">
+                <div className="centerdiv fade-in checkCenter">
                     <h2 className="checkHeader">Wybrane Opcje:</h2>
                         <Form className='next content young'>
                                 <label className="contentName">Las</label>

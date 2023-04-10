@@ -22,12 +22,13 @@
 .content {
     display: grid;
     grid-area: content;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: column;
-}
-.mature {
+  }
+  
+  .mature {
     grid-template-rows: repeat(9, auto);
-}
+  }
 .young {
     grid-template-rows: repeat(10, auto);
 }
@@ -70,6 +71,16 @@
     margin-bottom: 50px;
 }
 
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+  }
 
 
 .label {
@@ -118,8 +129,15 @@ body {
     
 }
 
-.cos {
-    float: right;
+.edit {
+    display: flex;
+}
+
+.somebutton {
+    width: 61px;
+    height: 30px;
+    margin-left: 55px;
+
 }
 
 .forlink {
@@ -128,8 +146,20 @@ body {
     margin-top: 15px;
 }
 
-
-
 input[type]{
     margin-right: 10px;
 }
+@keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s forwards;
+  }
+  

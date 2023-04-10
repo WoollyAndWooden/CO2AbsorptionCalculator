@@ -43,7 +43,7 @@ export default function PercentagesPage() {
       }
   return (
     <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Wpisz procentowy udział każdego z gatunków w ekosystemie leśnym. Suma nie może być mniejsza niż 60%</h2>
                 <Form className='next'>
                 <div className='column'>

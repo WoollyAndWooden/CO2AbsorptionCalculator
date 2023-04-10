@@ -28,7 +28,7 @@ export default function AverageAgePage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Średni wiek lasu:</h2>
                 <form>
                     {ageGroups.map(element => (

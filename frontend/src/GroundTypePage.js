@@ -44,7 +44,7 @@ export default function GroundTypePage() {
     }
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Rodzaj podłoża:</h2>
                 <form>
                     {habitatTypes.map(element => (

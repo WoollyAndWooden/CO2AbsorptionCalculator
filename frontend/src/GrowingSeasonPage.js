@@ -42,7 +42,7 @@ export default function GrowingSeasonPage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Lokacja</h2>
                 <form>
                     {places.map(element => (

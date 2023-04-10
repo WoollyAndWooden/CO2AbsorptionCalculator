@@ -1,83 +1,100 @@
-import React from 'react'
-import { useRef } from 'react'
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 export default function HabitatPage() {
-    const location = useLocation()
-    const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
-    const [isSelected, setSelected] = useState(false)
-    const inputRef = useRef()
-    const habitatTypes = [
-        ["Alder", "Ribeso nigiri-Alnetum", "Ols porzeczkowy"],
-        ["Swamp-birch", "Thelypteridi-Betuletum pubescentis", "Subborealna brzezina bagienna"],
-        ["Swamp-oak", "Carici elongatae-Quercetum", "Dębiak turzycowy"],
-        ["Ash-alder", "Fraxino-Alnetum", "Łęg jesionowo - olsowy"],
-        ["Mesic lime-oak-hornbeam", "Tilio-Carpinetum mesic", "Grąd subkontynentalny suchy"],
-        ["Moist lime-oak-hornbeam", "Tilio-Carpinetum moist", "Grąd subkontynentalny wilgotny"],
-        ["Oak-pine", "Querco roboris-Pinetum", "Kontynentalny bór mieszany "],
-        ["Oak-spruce", "Querco-Piceetum", "Subborealny bór mieszany "],
-        ["Thermophilous oak", "Potentillo albae-Quercetum", "Świetlista dąbrowa subkontynentalna"],
-        ["Mesic pine", "Peucedano-Pinetum", "Kontynentalny bór sosnowy świeży "],
-        ["Moist pine", "Molinio-Pinetum", "Bór sosnowy wilgotny "],
-        ["Boreal spruce", "Sphagno girgensohnii-Piceetum", "Borealna świerczyna na torfie"],
-    ]
+  const location = useLocation();
+  const [choiceList, setChoiceList] = useState(location.state.state.concat(0));
+  const [isSelected, setSelected] = useState(false);
+  const inputRef = useRef();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    function handleChange(event){
-        setSelected(true)
-        if(choiceList.length === 4) {
-            choiceList.pop()
-        }
+  useEffect(() => {
+    axios
+      .get('http://localhost:8080/api/habitat/all')
+      .then(response => {
+        setData(response.data);
+        setLoading(false);
+      })  
+      .catch(error => console.log(error));
+  });
 
-        const newList = choiceList.concat({value: event.target.value})
-        setChoiceList(newList)
+  function handleChange(event) {
+    setSelected(true);
+    if (choiceList.length === 4) {
+      choiceList.pop();
     }
 
-    function goToAnotherPage(event) {
-        if(!isSelected) {
-            alert("Nie została wybrana żadna opcja!")
-            event.preventDefault()
-        }
-    }
+    const newList = choiceList.concat({ value: event.target.value });
+    setChoiceList(newList);
+  }
 
+  function goToAnotherPage(event) {
+    if (!isSelected) {
+      alert('Nie została wybrana żadna opcja!');
+      event.preventDefault();
+    }
+  }
+
+  if (loading) {
     return (
-        <body>
-            <div className="centerdiv">
-                <h2>Siedlisko:</h2>
-                <form>
-                    {habitatTypes.map(element => (
-                        <div>
-                            <label>
-                                <input
-                                className='radio' 
-                                    ref={inputRef}
-                                    name="radiobutton"
-                                    type="radio"
-                                    key={element[0]}
-                                    value={element[0]}
-                                    onClick={(event) => handleChange(event)}
-                                />
-                                {element[0]} ({element[1]})/{element[2]}
-                            </label>
-                        </div>
-                    ))}
-
-                    <div className='forlink'>
-                    <Link className='endlink' to={{
-                            pathname: '/averageAge',
-                            state: {
-                                state: choiceList.slice(0, -2)
-                            }
-                        }}>Wróć</Link>
-                    <Link onClick={goToAnotherPage} className='link' to={{
-                        pathname: '/degree',
-                        state: {
-                            state: choiceList
-                        }
-                    }}>Dalej</Link>
-                    </div>
-                </form>
-            </div>
-        </body>
+      <center>
+        <h1>Loading....</h1>
+      </center>
     )
+  }
+
+  return (
+    <body>
+      <div className="centerdiv fade-in">
+        <h2>Siedlisko:</h2>
+        <form>
+          {data &&
+            data.map(element => (
+              <div key={element.name}>
+                <label>
+                  <input
+                    className="radio"
+                    ref={inputRef}
+                    name="radiobutton"
+                    type="radio"
+                    value={element.name}
+                    onClick={handleChange}
+                  />
+                  {element.name} ({element.latinName})/{element.polishName}
+                </label>
+              </div>
+            ))}
+
+          <div className="forlink">
+            <Link
+              className="endlink"
+              to={{
+                pathname: '/averageAge',
+                state: {
+                  state: choiceList.slice(0, -2),
+                },
+              }}
+            >
+              Wróć
+            </Link>
+            <Link
+              onClick={goToAnotherPage}
+              className="link"
+              to={{
+                pathname: '/degree',
+                state: {
+                  state: choiceList,
+                },
+              }}
+            >
+              Dalej
+            </Link>
+          </div>
+        </form>
+      </div>
+    </body>
+  );
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useRef } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import axios from 'axios';
 
 export default function DegreePage() {
     const location = useLocation()
@@ -9,25 +10,26 @@ export default function DegreePage() {
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
     const degrees = ["Naturalne", "O znamionach siedlisk naturalnych", "Półnaturalne"]
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      axios
+        .get('http://localhost:8080/api/degree/all')
+        .then(response => {
+          setData(response.data);
+          setLoading(false);
+        })  
+        .catch(error => console.log(error));
+    });
 
-    function handleChange(event){
+    function handleChange(name, value){
         setSelected(true)
         if(choiceList.length === 5) {
             choiceList.pop()
         }
-        const value = event.target.value
-        var choice;
-        switch(value){
-            case 'Naturalne':
-                choice = {percentage: 1, value: 'Naturalne'}
-                break
-            case 'O znamionach siedlisk naturalnych':
-                choice = {percentage: 0.8, value: 'O znamionach siedlisk naturalnych'}
-                break
-            case "Półnaturalne":
-                choice = {percentage: 0.5, value: 'Półnaturalne'}
-                break
-        }
+        let choice = {percentage: value, value: name}
+        console.log(choice)
 
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
@@ -40,12 +42,20 @@ export default function DegreePage() {
         }
     }
 
+    if (loading) {
+        return (
+          <center>
+            <h1>Loading....</h1>
+          </center>
+        )
+      }
+
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Stopień Naturalności:</h2>
                 <form>
-                    {degrees.map(element => (
+                    {data && data.map(element => (
                         <div>
                             <label className='contentValue  '>
                                 <input
@@ -53,11 +63,11 @@ export default function DegreePage() {
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
-                                key={element} 
-                                value={element}
-                                onClick={(event) => handleChange(event)} 
+                                key={element.name} 
+                                value={element.name}
+                                onClick={(event) => handleChange(element.name, element.value)} 
                                 />
-                                {element}
+                                {element.name}
                             </label>
                         </div>
                     ))}

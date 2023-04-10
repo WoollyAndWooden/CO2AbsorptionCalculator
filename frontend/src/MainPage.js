@@ -24,7 +24,7 @@ export default function MainPage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Chcę obliczyć wielkość akumulacji CO2 przez:</h2>
                 <form>
                     <select  onChange={addChoice} aria-label="Wybierz wiek lasu">

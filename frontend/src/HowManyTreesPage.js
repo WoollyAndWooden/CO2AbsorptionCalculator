@@ -30,7 +30,7 @@ export default function HowManyTreesPage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Ilość sadzonek na ha:</h2>
                 <form>
                     {habitatTypes.map(element => (

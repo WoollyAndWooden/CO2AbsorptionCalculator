@@ -59,7 +59,7 @@ export default function MaslPage() {
 
     return (
         <body>
-            <div className="centerdiv">
+            <div className="centerdiv fade-in">
                 <h2>Wysokość n.p.m:</h2>
                 <form>
                 {landforms.map(element => (
