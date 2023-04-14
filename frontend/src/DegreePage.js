@@ -4,12 +4,28 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios';
 
+export function getDegreeChoice(value) {
+    let percentage = 0
+
+    switch(value) {
+        case 'Naturalne':
+            percentage = 1
+            break;
+        case 'O znamionach siedlisk naturalnych':
+            percentage = 0.8
+            break;
+        case 'Półnaturalne':
+            percentage = 0.5
+            break;
+    }
+    return {percentage: percentage, value: value}
+}
+
 export default function DegreePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
-    const degrees = ["Naturalne", "O znamionach siedlisk naturalnych", "Półnaturalne"]
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
   
@@ -23,12 +39,12 @@ export default function DegreePage() {
         .catch(error => console.log(error));
     });
 
-    function handleChange(name, value){
+    function handleChange(name, percentage){
         setSelected(true)
         if(choiceList.length === 5) {
             choiceList.pop()
         }
-        let choice = {percentage: value, value: name}
+        let choice = {percentage: percentage, value: name}
         console.log(choice)
 
         const newList = choiceList.concat(choice)

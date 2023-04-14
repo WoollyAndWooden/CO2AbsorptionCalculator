@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+
 export default function HabitatPage() {
   const location = useLocation();
   const [choiceList, setChoiceList] = useState(location.state.state.concat(0));

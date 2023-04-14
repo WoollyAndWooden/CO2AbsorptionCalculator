@@ -1,12 +1,50 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
+export function getSoilMoistureChoice(value) {
+    let tag = ''
+    switch(value){
+        case 'Bagienna':
+            tag = 'swamp'
+            break
+        case 'Podmokła':
+            tag = 'wet'
+            break
+        case "Wilgotna":
+            tag = 'moist'
+            break
+        case "Pół wilgotna":
+            tag = 'half-moist'
+            break
+        case "Sucha":
+            tag = 'dry'
+            break
+    }
+    return {tag: tag, value: value}
+
+
+}
 
 export default function SoilMoisturePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
-    const soilMoisture = ["Bagienna", "Podmokła", "Wilgotna", "Pół wilgotna", "Sucha"]
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios
+          .get('http://localhost:8080/api/soilMoisture/all')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+          })  
+          .catch(error => console.log(error));
+      });
+
+      
 
     function handleChange(event){
         setSelected(true)
@@ -19,27 +57,8 @@ export default function SoilMoisturePage() {
                 choiceList.pop()
             }
         }
-        
         const value = event.target.value
-        var choice;
-        switch(value){
-            case 'Bagienna':
-                choice = {tag: 'swamp', value: value}
-                break
-            case 'Podmokła':
-                choice = {tag : 'wet', value: value}
-                break
-            case "Wilgotna":
-                choice = {tag : 'moist', value: value}
-                break
-            case "Pół wilgotna":
-                choice = {tag : 'half-moist', value: value}
-                break
-            case "Sucha":
-                choice = {tag : 'dry', value: value}
-                break
-        }
-
+        const choice = getSoilMoistureChoice(value)
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }
@@ -52,12 +71,20 @@ export default function SoilMoisturePage() {
         }
     }
 
+    if (loading) {
+        return (
+          <center>
+            <h1>Loading....</h1>
+          </center>
+        )
+      }
+
     return (
         <body>
             <div className="centerdiv fade-in">
                 <h2>Wilgotność gleby:</h2>
                 <form>
-                    {soilMoisture.map(element => (
+                    {data && data.map(element => (
                         <div>
                             <label>
                                 <input
@@ -65,11 +92,11 @@ export default function SoilMoisturePage() {
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
-                                key={element} 
-                                value={element}
+                                key={element.soil} 
+                                value={element.soil}
                                 onClick={(event) => handleChange(event)} 
                                 />
-                                {element}
+                                {element.soil}
                             </label>
                         </div>
                     ))}

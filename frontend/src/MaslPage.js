@@ -1,5 +1,27 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
+export function getMaslChoice(value) {
+    let tag = ''
+    let i = 0
+    switch(value){
+        case 'Niziny':
+            tag = 'lowlands'
+            i = 0
+            break
+        case 'Wyżyny':
+            tag = 'highlands'
+            i = 1
+            break
+        case 'Góry':
+            tag = 'mountains'
+            i = 2
+            break
+    }
+
+    return [{tag: tag, value: value}, i]
+}
 
 export default function MaslPage() {
     const location = useLocation()
@@ -7,13 +29,20 @@ export default function MaslPage() {
     const [isSelected, setSelected] = useState(false)    
 
     const inputRef = useRef()
-    const landforms = ["Niziny", "Wyżyny", "Góry"]
-    const descriptions = [
-        "Niziny - Obszary o wysokości bezwzględnej do 300 m n.p.m.",
-        "Wyżyny - Obszary o wysokości powyżej 300 m n.p.m. i wysokościach względnych nieprzekraczających 300 m.",
-        "Góry - Obszary o wysokości powyżej 300 m n.p.m. i różnicach wysokości względnych powyżej 300 m."
-    ]
     const [description, setDescription] = useState("")
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios
+          .get('http://localhost:8080/api/masl/all')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+          })  
+          .catch(error => console.log(error));
+      });
 
 
     function handleChange(event){
@@ -28,26 +57,10 @@ export default function MaslPage() {
             }
         }
         const value = event.target.value
-        var choice;
-        var i = 0
-        switch(value){
-            case 'Niziny':
-                choice = {tag: 'lowlands', value: value}
-                i = 0
-                break
-            case 'Wyżyny':
-                choice = {tag : 'highlands', value: value}
-                i = 1
-                break
-            case 'Góry':
-                choice = {tag : 'mountains', value: value}
-                i = 2
-                break
-        }
-
+        const [choice, i] = getMaslChoice(value)
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
-        setDescription(descriptions[i])
+        setDescription(data[i].description)
     }
 
     function goToAnotherPage(event) {
@@ -62,7 +75,7 @@ export default function MaslPage() {
             <div className="centerdiv fade-in">
                 <h2>Wysokość n.p.m:</h2>
                 <form>
-                {landforms.map(element => (
+                {data && data.map(element => (
                         <div>
                             <label>
                                 <input
@@ -70,11 +83,11 @@ export default function MaslPage() {
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
-                                key={element} 
-                                value={element}
+                                key={element.landForm} 
+                                value={element.landForm}
                                 onClick={(event) => handleChange(event)} 
                                 />
-                                {element}
+                                {element.landForm}
                             </label>
                         </div>
                     ))}

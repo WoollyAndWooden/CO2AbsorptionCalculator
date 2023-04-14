@@ -1,21 +1,39 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './css/page.css'
+import axios from 'axios'
 
+export function getChoiceValue(value) {
+    return {value: value}
+}
 
 export default function AverageAgePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)
     const inputRef = useRef()
-    const ageGroups = ["30-50", "51-70", "71-90", "91-110", "111-130"]
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    
+
+    useEffect(() => {
+        axios
+          .get('http://localhost:8080/api/averageAge/all')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+          })  
+          .catch(error => console.log(error));
+      });
 
     function handleChange(event){
         setSelected(true)
         if(choiceList.length === 3) {
             choiceList.pop()
         }
-        const newList = choiceList.concat({value: event.target.value})
+        const value = event.target.value
+        const newList = choiceList.concat(getChoiceValue(value))
         setChoiceList(newList)
     }
 
@@ -26,12 +44,20 @@ export default function AverageAgePage() {
         }
     }
 
+    if (loading) {
+        return (
+          <center>
+            <h1>Loading....</h1>
+          </center>
+        )
+      }
+
     return (
         <body>
             <div className="centerdiv fade-in">
                 <h2>Średni wiek lasu:</h2>
                 <form>
-                    {ageGroups.map(element => (
+                    {data && data.map(element => (
                         <div>
                             <label>
                                 <input
@@ -39,11 +65,11 @@ export default function AverageAgePage() {
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
-                                key={element} 
-                                value={element}
+                                key={element.ageInterval} 
+                                value={element.ageInterval}
                                 onClick={(event) => handleChange(event)} 
                                 />
-                                {element}
+                                {element.ageInterval}
                             </label>
                         </div>
                     ))}

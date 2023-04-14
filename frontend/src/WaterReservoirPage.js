@@ -1,6 +1,21 @@
 import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+export function getWaterReservoirChoice(value) {
+    let tag = ''
+    switch(value){
+        case 'Są':
+            tag = 'present'
+            break
+        case 'Brak':
+            tag = 'absent'
+            break
+    }
+
+    return {tag: tag, value: value}
+    
+}
+
 export default function WaterReservoirPage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
@@ -18,18 +33,8 @@ export default function WaterReservoirPage() {
                 choiceList.pop()
             }
         }
-        
         const value = event.target.value
-        var choice;
-        switch(value){
-            case 'Są':
-                choice = {tag: 'present', value: value}
-                break
-            case 'Brak':
-                choice = {tag : 'absent', value: value}
-                break
-        }
-
+        const choice = getWaterReservoirChoice(value)
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }

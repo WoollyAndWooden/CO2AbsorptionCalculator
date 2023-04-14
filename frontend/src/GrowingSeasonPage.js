@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
 
 export default function GrowingSeasonPage() {
     const location = useLocation()
@@ -7,13 +9,29 @@ export default function GrowingSeasonPage() {
     const [isSelected, setSelected] = useState(false)    
 
     const inputRef = useRef()
-    const places = [
-        "woj. suwalskie", "woj. warmińsko - mazurskie", "woj. podlaskie", "Mazowsze wschodnie",
-        "woj. lubelskie", "woj. podkarpackie", "woj. małopolskie", "woj. łódzkie", "Mazowsze zachodnie i południowe",
-        "woj. kujawsko - pomorskie", "woj.pomorskie", "woj. zachodniopomorskie", "woj. wielkopolskie", "woj. lubuskie",
-        "woj .dolnośląskie", "woj. opolskie", "woj. świętkorzyskie", "woj. śląskie", "Kotlina Kłodzka", "Szczecin i okolice",
-        "Poznań i okolice", "Pasmo wysokich Tatr i Sudetów"
-    ]
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    
+
+    useEffect(() => {
+        axios
+          .get('http://localhost:8080/api/location/all')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+          })  
+          .catch(error => console.log(error));
+      });    function handleChange(event){
+        setSelected(true)
+        if(choiceList.length === 3) {
+            choiceList.pop()
+        }
+        const newList = choiceList.concat({value: event.target.value})
+        setChoiceList(newList)
+    }
+    
 
     function handleChange(event){
         setSelected(true)
@@ -39,13 +57,21 @@ export default function GrowingSeasonPage() {
             event.preventDefault()
         }
     }
+    
+    if (loading) {
+        return (
+          <center>
+            <h1>Loading....</h1>
+          </center>
+        )
+      }
 
     return (
         <body>
             <div className="centerdiv fade-in">
                 <h2>Lokacja</h2>
                 <form>
-                    {places.map(element => (
+                    {data && data.map(element => (
                         <div>
                             <label>
                                 <input
@@ -53,11 +79,11 @@ export default function GrowingSeasonPage() {
                                 ref={inputRef}
                                 name="radiobutton"
                                 type="radio"
-                                key={element} 
-                                value={element}
+                                key={element.name} 
+                                value={element.name}
                                 onClick={(event) => handleChange(event)} 
                                 />
-                                {element}
+                                {element.name}
                             </label>
                         </div>
                     ))}
