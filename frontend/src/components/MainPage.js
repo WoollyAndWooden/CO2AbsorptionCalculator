@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import './css/page.css'
+import '../css/page.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export function getForestTypeChoice(value) {

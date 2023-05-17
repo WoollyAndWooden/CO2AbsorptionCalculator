@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import './css/page.css'
+import '../css/page.css'
 import axios from 'axios'
 
 export function getChoiceValue(value) {

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import './css/page.css'
+import '../css/page.css'
 
 function handleDecimalPlace(value) {
     if(value.length === 0) {

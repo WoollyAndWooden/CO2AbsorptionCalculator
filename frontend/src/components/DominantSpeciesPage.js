@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom'
 
-export default function DominantSpecies() {
+export default function DominantSpeciesPage() {
 
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state)

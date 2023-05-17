@@ -1,21 +1,21 @@
 import './css/App.css';
-import MainPage from './MainPage';
+import MainPage from './components/MainPage';
 import {Switch, Route, Router} from 'react-router-dom'
-import AreaPage from './AreaPage';
-import AverageAgePage from "./AverageAgePage";
-import NotImplemented from './NotImplemented';
-import HabitatPage from './HabitatPage';
-import DegreePage from './DegreePage';
-import SoilMoisturePage from './SoilMoisturePage';
-import WaterReservoirPage from './WaterReservoirPage';
-import MaslPage from './MaslPage';
-import GrowingSeasonPage from './GrowingSeasonPage';
-import GroundTypePage from './GroundTypePage';
-import HowManyTreesPage from './HowManyTreesPage';
-import DominantSpecies from './DominantSpecies';
-import PercentagesPage from './PercentagesPage';
-import CheckPageMature from './CheckPageMature';
-import CheckPageYoung from './CheckPageYoung';
+import AreaPage from './components/AreaPage';
+import AverageAgePage from "./components/AverageAgePage";
+import NotImplemented from './components/NotImplemented';
+import HabitatPage from './components/HabitatPage';
+import DegreePage from './components/DegreePage';
+import SoilMoisturePage from './components/SoilMoisturePage';
+import WaterReservoirPage from './components/WaterReservoirPage';
+import MaslPage from './components/MaslPage';
+import GrowingSeasonPage from './components/GrowingSeasonPage';
+import GroundTypePage from './components/GroundTypePage';
+import HowManyTreesPage from './components/HowManyTreesPage';
+import DominantSpeciesPage from './components/DominantSpeciesPage';
+import PercentagesPage from './components/PercentagesPage';
+import CheckPageMature from './components/CheckPageMature';
+import CheckPageYoung from './components/CheckPageYoung';
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/check-young" component = {CheckPageYoung} />
         <Route exact path="/groundtype" component = {GroundTypePage} />
         <Route exact path="/howmanytrees" component = {HowManyTreesPage} />
-        <Route exact path="/dominant" component = {DominantSpecies} />
+        <Route exact path="/dominant" component = {DominantSpeciesPage} />
         <Route exact path="/percentages" component = {PercentagesPage} />
         <Route exact path="/notImplemented" component={NotImplemented} />  
     </Switch>      
