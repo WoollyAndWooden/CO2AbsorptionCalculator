@@ -98,7 +98,7 @@ export default function GrowingSeasonPage() {
                             }
                         }}>Wróć</Link>
                 <Link onClick={goToAnotherPage} className='link' to={{
-                        pathname: '/check',
+                        pathname: choiceList[0].tag === 'mature' ? '/check-mature' : '/check-young',
                         state: {
                             state: choiceList
                         }

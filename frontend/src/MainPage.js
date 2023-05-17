@@ -19,12 +19,10 @@ export default function MainPage() {
     const options = [{tag: 'mature', value: 'Dojrzałe lasy'}, {tag: 'young', value: 'Młode lasy'}]
     const inputRef = useRef()
 
-    
-
     function addChoice(event) {
         choiceList.pop()
         const value = event.target.value
-        let choice = getForestTypeChoice(event)
+        let choice = getForestTypeChoice(value)
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }
@@ -50,9 +48,6 @@ export default function MainPage() {
                             }
                         }}>Dalej</Link>
                 </div>
-                
-
-        
             </div>
         </body>
     )

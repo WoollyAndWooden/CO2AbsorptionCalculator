@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button, Form, FormLabel } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom'
 
+export function getPercentageChoice(val) {
+  return Number(val)
+}
 
 export default function PercentagesPage() {
 

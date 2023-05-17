@@ -2,11 +2,27 @@ import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 
+export function getGroundTypeChoice(value) {
+    let tag = ''
+    switch(value) {
+        case 'po wyrębie':
+            tag = 'after felling'
+            break
+        case 'porolna':
+            tag = 'post-agricultural'
+            break
+        case 'łąka':
+            tag = 'meadow'
+            break
+    }
+
+    return {tag: tag, value: value}
+}
+
 export default function GroundTypePage() {
     const location = useLocation()
     const [choiceList, setChoiceList] = useState(location.state.state.concat(0))
     const [isSelected, setSelected] = useState(false)  
-    // const [selectedOptions, setSelectedOptions] = useState([]);
     const inputRef = useRef()
     const habitatTypes = ["po wyrębie", "porolna", "łąka"]
         
@@ -17,21 +33,9 @@ export default function GroundTypePage() {
         if(choiceList.length === 3) {
             choiceList.pop()
         }
-        var choice;
-
-
-        switch(event.target.value){
-            case 'po wyrębie':
-                choice = {tag: 'after felling', value: event.target.value}
-                break
-            case 'porolna':
-                choice = {tag : 'post-agricultural', value: event.target.value}
-                break
-            case 'łąka':
-                choice = {tag : 'meadow', value: event.target.value}
-                break
-        }
-
+        
+        const value = event.target.value
+        const choice = getGroundTypeChoice(value)
         const newList = choiceList.concat(choice)
         setChoiceList(newList)
     }

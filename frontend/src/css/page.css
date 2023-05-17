@@ -1,11 +1,10 @@
 .centerdiv {
     background-color: white;
-    max-width: 500px;
+    max-width: 600px;
     margin: auto;
     padding: 20px;
     border-radius: 25px;
     border: 5px solid black;
-    display: grid;
 }
 
 .checkCenter {
@@ -14,6 +13,22 @@
             "content content"
             "footer footer";
 }
+
+.table-style {
+    border-collapse: collapse;
+    width: 150%;
+    height: 12%;
+  }
+  
+  .table-style th, .table-style td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .table-style th {
+    background-color: #f2f2f2;
+  }
 
 .checkHeader {
     grid-area: header;
@@ -118,33 +133,42 @@ body {
 }
 
 .endlink {
-    float: left;
     background-color: #1d1993;
     color: white;
     padding: 10px;
     text-decoration: none;
     border-radius: 25px;
     text-align: center;
-
-    
-}
+  }
+  
+  .forlink {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 30px;
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  
+  .endlink:first-child {
+    margin-right: auto;
+  }
+  
 
 .edit {
     display: flex;
+    flex-direction: row;
 }
 
 .somebutton {
-    width: 61px;
-    height: 30px;
-    margin-left: 55px;
+    width: 69px;
+    height: 40px;
+    margin-left: 5px;
+    text-align: center;
 
 }
 
-.forlink {
-    padding-bottom: 30px;
-    justify-items: center;
-    margin-top: 15px;
-}
 
 input[type]{
     margin-right: 10px;

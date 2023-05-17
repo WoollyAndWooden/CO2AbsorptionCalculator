@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+export function getHowManyTreesChoice(value) {
+    return {value: value}
+}
 
 export default function HowManyTreesPage() {
     const location = useLocation()
@@ -9,15 +12,14 @@ export default function HowManyTreesPage() {
     const inputRef = useRef()
     const habitatTypes = ["800 - 1200", "1200 - 1800"]
     
-
     function handleChange(event){
         setSelected(true)
         if(choiceList.length === 6) {
             choiceList.pop()
         }
+        const value = event.target.value
 
-
-        const newList = choiceList.concat({value:event.target.value})
+        const newList = choiceList.concat(getHowManyTreesChoice(value))
         setChoiceList(newList)
     }
 

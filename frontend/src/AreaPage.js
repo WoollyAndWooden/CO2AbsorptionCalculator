@@ -14,6 +14,10 @@ export function getFormattedValue(value) {
     return {value: handleDecimalPlace(value)}
 }
 
+export function getFormattedValueNoObject(value) {
+    return handleDecimalPlace(value)
+}
+
 export default function AreaPage() {
     const location = useLocation()
     const [value, setValue] = useState(0)

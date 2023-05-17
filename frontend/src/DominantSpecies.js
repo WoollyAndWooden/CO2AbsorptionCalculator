@@ -35,20 +35,20 @@ export default function DominantSpecies() {
     }
 
     function handleChange(event){
-            const { value } = event.target;
+        const { value } = event.target;
 
-            let newList;
-            if(selectedOptions.includes(value)) {
-                newList = selectedOptions.filter(v => v !== value)
-                setSelectedOptions(newList)
-            } else {
-                if(selectedOptions.length >= 3) {
-                    return
-                }
-                newList = [...selectedOptions, value]
-                setSelectedOptions(newList)
+        let newList;
+        if(selectedOptions.includes(value)) {
+            newList = selectedOptions.filter(v => v !== value)
+            setSelectedOptions(newList)
+        } else {
+            if(selectedOptions.length >= 3) {
+                return
             }
-            checkSelected(newList)
+            newList = [...selectedOptions, value]
+            setSelectedOptions(newList)
+        }
+        checkSelected(newList)
     }
 
     function checkSelected(newList) {
